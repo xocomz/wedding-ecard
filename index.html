@@ -1,0 +1,1928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <title>Wedding Invitation | Chiraporn &amp; Arunrach | agtgth.com</title>
+  <meta name="description" content="Wedding Invitation of Chiraporn &amp; Arunrach - December 5, 2026 at Assumption Cathedral, Bangkok">
+  <meta property="og:title" content="Wedding Invitation | Chiraporn &amp; Arunrach">
+  <meta property="og:description" content="Saturday, December 5, 2026 - Assumption Cathedral, Bangkok">
+  <meta property="og:url" content="https://agtgth.com">
+  <meta property="og:image" content="couple.jpg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Blosta Script';
+      src: local('Blosta Script'), local('BlostaScript');
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', 'Sarabun', serif;
+      background: radial-gradient(circle at center, #1b3525 0%, #0d1a12 100%);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1200px;
+    }
+
+    .scene-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 480px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ปุ่มควบคุมมุมบน: สลับภาษา & เพลง */
+    .top-floating-bar {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .lang-switcher-btn, .music-toggle-btn {
+      pointer-events: auto;
+      background: rgba(38, 78, 54, 0.85);
+      border: 1px solid rgba(240, 238, 233, 0.45);
+      color: #F0EEE9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .lang-switcher-btn.visible, .music-toggle-btn.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lang-switcher-btn {
+      height: 34px;
+      padding: 0 12px;
+      border-radius: 20px;
+      font-family: 'Cinzel', 'Sarabun', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      gap: 4px;
+    }
+
+    .lang-switcher-btn .lang-opt {
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .lang-switcher-btn .lang-opt.active {
+      opacity: 1;
+      color: #faf9ab;
+      font-weight: bold;
+    }
+
+    .music-toggle-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .music-toggle-btn.playing svg {
+      animation: spin-record 4s linear infinite;
+    }
+
+    .music-toggle-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: #F0EEE9;
+    }
+
+    @keyframes spin-record {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ========================================================
+       หน้าปกซองจดหมายแบบเต็มหน้าจอ (Full Screen Cover)
+       ======================================================== */
+    .envelope-stage {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      aspect-ratio: unset;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
+      background-color: #0d1a12;
+    }
+
+    .envelope-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.4s ease;
+    }
+
+    .envelope-opened-img {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scene-container.opening .envelope-closed-img {
+      opacity: 0;
+    }
+
+    .scene-container.opening .envelope-opened-img {
+      opacity: 1;
+    }
+
+    .envelope-open-hint {
+      position: absolute;
+      bottom: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #5c3202;
+      background: rgba(251, 213, 120, 0.9);
+      padding: 6px 16px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      pointer-events: none;
+      animation: natural-pulse 2s infinite ease-in-out;
+      font-weight: 600;
+      z-index: 5;
+    }
+
+    @keyframes natural-pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.04); }
+    }
+
+    /* การ์ดด้านใน */
+    .invitation-card-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #264e36;
+      color: #F0EEE9;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      z-index: 1;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(0.92) translateY(50px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .invitation-card-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scene-container.fully-opened .envelope-stage {
+      transform: translateY(380px) scale(0.8);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.7s ease 0.3s;
+    }
+
+    .scene-container.fully-opened .invitation-card-wrapper {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+      z-index: 25;
+      transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+    }
+
+    .session {
+      width: 100%;
+      height: 100vh;
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 14px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* SESSION 1: รูปภาพบ่าวสาวแบบเต็มพื้นที่เว็บไซต์มากขึ้น */
+    .session-1 {
+      padding: 14px 12px;
+      justify-content: center;
+    }
+
+    .photo-section-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .couple-photo-wrapper {
+      width: 94%;
+      max-width: 360px;
+      height: 68vh;
+      max-height: 540px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1.5px solid rgba(240, 238, 233, 0.9);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+      background: #1d3c2a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .couple-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .lace-under-photo {
+      width: 94%;
+      max-width: 360px;
+      height: 65px;
+      object-fit: contain;
+      margin-top: 6px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
+      opacity: 0.95;
+      pointer-events: none;
+    }
+
+    .scroll-down-hint {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cinzel', 'Sarabun', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: rgba(240, 238, 233, 0.8);
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      animation: float-down 2s infinite ease-in-out;
+    }
+
+    .scroll-arrow {
+      width: 11px;
+      height: 11px;
+      border-right: 1.5px solid #F0EEE9;
+      border-bottom: 1.5px solid #F0EEE9;
+      transform: rotate(45deg);
+    }
+
+    @keyframes float-down {
+      0%, 100% { transform: translate(-50%, 0); opacity: 0.6; }
+      50% { transform: translate(-50%, 5px); opacity: 1; }
+    }
+
+    /* SESSION 2 */
+    .session-2 {
+      justify-content: center;
+      padding: 16px 16px;
+      gap: 6px;
+    }
+
+    .couple-name {
+      font-family: 'Blosta Script', 'Alex Brush', 'Great Vibes', cursive;
+      font-size: 58px;
+      font-weight: normal;
+      color: #F0EEE9;
+      margin: 0;
+      line-height: 1.15;
+      letter-spacing: 0.5px;
+    }
+
+    .invitation-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(240, 238, 233, 0.94);
+      font-style: italic;
+      max-width: 340px;
+      margin: 2px 0;
+    }
+
+    .lace-divider-img {
+      width: 82%;
+      max-width: 300px;
+      height: 34px;
+      object-fit: contain;
+      margin: 4px auto;
+      display: block;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.38));
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .section-title {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #F0EEE9;
+      margin-bottom: 2px;
+      font-weight: bold;
+    }
+
+    .event-info {
+      font-size: 15.5px;
+      line-height: 1.4;
+      color: #F0EEE9;
+      font-weight: 600;
+    }
+
+    .venue-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #F0EEE9;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+
+    .cal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-family: 'Cinzel', 'Sarabun', serif;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #264e36;
+      background-color: #F0EEE9;
+      border: 1px solid rgba(240, 238, 233, 0.9);
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+      margin-bottom: 4px;
+    }
+
+    .cal-btn svg {
+      width: 12px;
+      height: 12px;
+      fill: #264e36;
+    }
+
+    /* COUNTDOWN & TEXT */
+    .countdown-intro-text {
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: rgba(240, 238, 233, 0.9);
+      max-width: 340px;
+      margin: 0 auto 4px auto;
+      font-style: italic;
+    }
+
+    .countdown-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 2px auto 6px auto;
+    }
+
+    .countdown-box {
+      background: rgba(240, 238, 233, 0.08);
+      border: 1px solid rgba(240, 238, 233, 0.25);
+      border-radius: 8px;
+      padding: 6px 8px;
+      min-width: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: blur(3px);
+    }
+
+    .countdown-number {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #F0EEE9;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      font-family: 'Cinzel', 'Sarabun', serif;
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(240, 238, 233, 0.75);
+      margin-top: 4px;
+    }
+
+    /* SESSION 3: กึ่งกลางแนวตั้ง */
+    .session-3 {
+      justify-content: center;
+      padding: 24px 20px;
+      overflow-y: auto;
+    }
+
+    .session-3-inner {
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: auto 0;
+    }
+
+    .schedule-list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 6px 0;
+      text-align: left;
+      display: inline-block;
+    }
+
+    .schedule-list li {
+      font-size: 13px;
+      padding: 3px 0;
+      color: rgba(240, 238, 233, 0.95);
+    }
+
+    .schedule-list strong {
+      display: inline-block;
+      width: 86px;
+      color: #F0EEE9;
+    }
+
+    .palette-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 4px auto 3px auto;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: transform 0.25s ease;
+    }
+
+    .color-swatch-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .color-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #F0EEE9;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    .palette-hint {
+      font-size: 10.5px;
+      letter-spacing: 0.8px;
+      color: rgba(240, 238, 233, 0.82);
+      margin-top: 3px;
+      font-style: italic;
+    }
+
+    .qr-container {
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    .qr-container img {
+      width: 84px;
+      height: 84px;
+      border-radius: 8px;
+      border: 2px solid rgba(240, 238, 233, 0.9);
+      padding: 4px;
+      background: #F0EEE9;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .qr-hint {
+      font-size: 10px;
+      color: rgba(240, 238, 233, 0.8);
+      margin-top: 3px;
+      font-style: italic;
+    }
+
+    /* ปุ่ม Action: Map -> RSVP -> FAQ -> Our Story */
+    .action-button-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .map-btn, .rsvp-btn, .faq-btn, .story-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      width: 230px;
+      padding: 8.5px 0;
+      font-size: 11.5px;
+      font-family: 'Cinzel', 'Sarabun', serif;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+    }
+
+    .map-btn {
+      color: #264e36;
+      background-color: #F0EEE9;
+    }
+
+    .rsvp-btn {
+      color: #F0EEE9;
+      background-color: rgba(240, 238, 233, 0.15);
+      border: 1px solid rgba(240, 238, 233, 0.65);
+    }
+
+    .faq-btn {
+      color: #faf9ab;
+      background-color: rgba(250, 249, 171, 0.1);
+      border: 1px dashed rgba(250, 249, 171, 0.6);
+    }
+
+    .faq-btn:hover {
+      background-color: rgba(250, 249, 171, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .story-btn {
+      color: #264e36;
+      background: linear-gradient(135deg, #e7d8b8 0%, #FAF8F2 100%);
+      border: 1px solid #d4af37;
+    }
+
+    .story-btn:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 60;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #264e36;
+      border: 1px solid rgba(240, 238, 233, 0.35);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 380px;
+      padding: 24px 20px;
+      text-align: center;
+      color: #F0EEE9;
+      position: relative;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+      transform: translateY(25px) scale(0.95);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: none;
+      border: none;
+      color: #F0EEE9;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.85;
+      z-index: 10;
+    }
+
+    .modal-title {
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-pantone-code {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: rgba(240, 238, 233, 0.7);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      font-family: 'Cinzel', 'Sarabun', sans-serif;
+    }
+
+    /* Modal Our Story */
+    .story-modal-card {
+      max-width: 440px;
+      max-height: 88vh;
+      overflow-y: auto;
+      text-align: left;
+      padding: 24px 18px;
+    }
+
+    .story-modal-card::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .story-modal-card::-webkit-scrollbar-thumb {
+      background: rgba(240, 238, 233, 0.25);
+      border-radius: 4px;
+    }
+
+    .story-slider-container {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 14px 0 16px 0;
+      border: 1.5px solid rgba(240, 238, 233, 0.4);
+      background: #193826;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .story-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .story-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .story-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.45);
+      color: #F0EEE9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 5;
+      font-size: 16px;
+      transition: background 0.2s;
+    }
+
+    .slider-nav-btn:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .slider-prev { left: 8px; }
+    .slider-next { right: 8px; }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      z-index: 5;
+    }
+
+    .slider-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(240, 238, 233, 0.4);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .slider-dot.active {
+      background: #faf9ab;
+      transform: scale(1.3);
+    }
+
+    .story-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      padding-left: 18px;
+      border-left: 2px solid rgba(240, 238, 233, 0.25);
+      margin-top: 16px;
+      margin-left: 6px;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -23px;
+      top: 4px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #faf9ab;
+      box-shadow: 0 0 6px rgba(250, 249, 171, 0.8);
+    }
+
+    .timeline-year {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #faf9ab;
+      letter-spacing: 1px;
+    }
+
+    .timeline-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #F0EEE9;
+      margin: 2px 0;
+    }
+
+    .timeline-desc {
+      font-size: 11.5px;
+      line-height: 1.6;
+      color: rgba(240, 238, 233, 0.85);
+    }
+
+    /* Modal FAQ Card & Accordion */
+    .faq-modal-card {
+      max-width: 440px;
+      max-height: 85vh;
+      overflow-y: auto;
+      text-align: left;
+      padding: 24px 18px;
+    }
+
+    .faq-modal-card::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .faq-modal-card::-webkit-scrollbar-thumb {
+      background: rgba(240, 238, 233, 0.25);
+      border-radius: 4px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .faq-item {
+      background: rgba(18, 44, 28, 0.85);
+      border: 1px solid rgba(240, 238, 233, 0.25);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+
+    .faq-question {
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #F0EEE9;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+      line-height: 1.4;
+    }
+
+    .faq-question svg {
+      width: 12px;
+      height: 12px;
+      fill: #F0EEE9;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-question svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 14px 12px 14px;
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: rgba(240, 238, 233, 0.85);
+      border-top: 1px solid rgba(240, 238, 233, 0.1);
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Modal RSVP Form */
+    .rsvp-modal-card {
+      max-width: 400px;
+      max-height: 85vh;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .rsvp-modal-card::-webkit-scrollbar {
+      display: none;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-family: 'Cinzel', 'Sarabun', serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(240, 238, 233, 0.9);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px 12px;
+      background: rgba(18, 44, 28, 0.8);
+      border: 1px solid rgba(240, 238, 233, 0.3);
+      border-radius: 8px;
+      color: #F0EEE9;
+      font-size: 13.5px;
+      font-family: 'Sarabun', sans-serif;
+      outline: none;
+    }
+
+    .attendance-pills {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .pill-radio {
+      display: none;
+    }
+
+    .pill-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      background: rgba(240, 238, 233, 0.08);
+      border: 1px solid rgba(240, 238, 233, 0.25);
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: rgba(240, 238, 233, 0.9);
+      cursor: pointer;
+    }
+
+    .pill-radio:checked + .pill-label {
+      background: rgba(240, 238, 233, 0.95);
+      color: #264e36;
+      font-weight: 600;
+      border-color: #F0EEE9;
+    }
+
+    .submit-rsvp-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #F0EEE9;
+      color: #264e36;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Cinzel', 'Sarabun', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      margin-top: 8px;
+    }
+
+    .rsvp-success-msg {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .rsvp-success-msg h3 {
+      font-family: 'Cinzel', 'Sarabun', serif;
+      letter-spacing: 2px;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .rsvp-success-msg p {
+      font-size: 13px;
+      color: rgba(240, 238, 233, 0.85);
+      line-height: 1.6;
+    }
+
+    /* Modal ปฏิทิน */
+    .cal-modal-card {
+      max-width: 320px;
+      padding: 24px 18px;
+    }
+
+    .cal-option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .cal-option-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(240, 238, 233, 0.12);
+      border: 1px solid rgba(240, 238, 233, 0.35);
+      color: #F0EEE9;
+      text-decoration: none;
+      font-size: 13px;
+      font-family: 'Cinzel', 'Sarabun', serif;
+      letter-spacing: 1px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .cal-option-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #F0EEE9;
+    }
+
+    /* Modal Outfit */
+    .outfit-grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .outfit-item {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1c3d2a;
+      border: 1px solid rgba(240, 238, 233, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .outfit-svg-box {
+      width: 100%;
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 8px;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, transparent 70%);
+    }
+
+    .outfit-svg-box svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .outfit-label {
+      font-size: 10px;
+      padding: 6px 4px;
+      background: rgba(0, 0, 0, 0.35);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      width: 100%;
+      font-family: 'Cinzel', 'Sarabun', sans-serif;
+      font-weight: 600;
+      color: #F0EEE9;
+    }
+
+    .modal-web-link {
+      display: inline-block;
+      font-size: 12px;
+      color: #F0EEE9;
+      text-decoration: underline;
+      opacity: 0.9;
+      font-family: 'Cinzel', 'Sarabun', sans-serif;
+      padding: 4px 8px;
+    }
+
+    @media (max-width: 480px) {
+      .couple-name {
+        font-size: 52px;
+      }
+      .couple-photo-wrapper {
+        width: 94%;
+        max-width: 360px;
+        height: 68vh;
+      }
+      .lace-under-photo {
+        width: 94%;
+        height: 62px;
+      }
+      .lace-divider-img {
+        width: 85%;
+        height: 34px;
+      }
+      .countdown-box {
+        min-width: 50px;
+        padding: 5px 6px;
+      }
+      .countdown-number {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+
+  <!-- แถบด้านบน: สลับภาษา & เพลง -->
+  <div class="top-floating-bar">
+    <button type="button" class="lang-switcher-btn" id="langSwitcherBtn" aria-label="Switch Language">
+      <span class="lang-opt active" id="optEN">EN</span>
+      <span>|</span>
+      <span class="lang-opt" id="optTH">TH</span>
+    </button>
+
+    <button type="button" class="music-toggle-btn" id="musicToggleBtn" aria-label="Toggle Music">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="scene-container" id="invitationScene">
+    <!-- หน้าปกซองจดหมายแบบเต็มจอ -->
+    <div class="envelope-stage" id="openBtn" role="button" aria-label="Open Invitation">
+      <img src="envelope-cover.png" alt="Closed Envelope" class="envelope-layer envelope-closed-img" onerror="this.onerror=null; this.src='couple.jpg';">
+      <img src="envelope-open.png" alt="Opened Envelope" class="envelope-layer envelope-opened-img" onerror="this.onerror=null; this.src='couple.jpg';">
+      <div class="envelope-open-hint" data-i18n="waxHint">Tap to open</div>
+    </div>
+
+    <!-- แผ่นการ์ดด้านใน (3 Sessions) -->
+    <div class="invitation-card-wrapper" id="cardWrapper">
+
+      <!-- SESSION 1: รูปภาพบ่าวสาวแบบเต็มพื้นที่เว็บไซต์มากขึ้น -->
+      <section class="session session-1">
+        <div class="photo-section-container">
+          <div class="couple-photo-wrapper">
+            <img src="couple.jpg" alt="Chiraporn &amp; Arunrach" class="couple-photo">
+          </div>
+          <img src="lace.png" alt="Bridal Lace" class="lace-under-photo">
+        </div>
+
+        <div class="scroll-down-hint">
+          <span data-i18n="swipeUp">Swipe Up</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </section>
+
+      <!-- SESSION 2: ข้อความกระชับ ขยายตัวอักษรใหญ่ขึ้นพอดีหน้าจอ -->
+      <section class="session session-2">
+        <h1 class="couple-name">Chiraporn<br>&amp; Arunrach</h1>
+        
+        <p class="invitation-text" data-i18n="invitationText">
+          Invite you to celebrate their love and witness their holy matrimony.
+        </p>
+
+        <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
+
+        <div class="section-title" data-i18n="dateVenueTitle">Date &amp; Venue</div>
+        <div class="event-info"><strong data-i18n="eventDate">Saturday, December 5, 2026</strong></div>
+        <div class="venue-name" data-i18n="venueName">Assumption Cathedral, Bangkok</div>
+
+        <button type="button" class="cal-btn" onclick="openCalendarModal()">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5v-5z"/>
+          </svg>
+          <span data-i18n="addToCalBtn">Add to Calendar</span>
+        </button>
+
+        <div class="countdown-intro-text" data-i18n="countdownIntro">
+          Please join us in celebrating our love and marriage, countdown in…
+        </div>
+
+        <div class="countdown-wrapper">
+          <div class="countdown-box">
+            <span class="countdown-number" id="cdDays">00</span>
+            <span class="countdown-label" data-i18n="cdDays">Days</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cdHours">00</span>
+            <span class="countdown-label" data-i18n="cdHours">Hours</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cdMins">00</span>
+            <span class="countdown-label" data-i18n="cdMins">Mins</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cdSecs">00</span>
+            <span class="countdown-label" data-i18n="cdSecs">Secs</span>
+          </div>
+        </div>
+
+        <div class="scroll-down-hint">
+          <span data-i18n="swipeSchedule">Swipe for Schedule</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </section>
+
+      <!-- SESSION 3: กำหนดการ ธีมสี แผนที่ และปุ่ม Action -->
+      <section class="session session-3">
+        <div class="session-3-inner">
+          <div class="section-title" data-i18n="scheduleTitle">Schedule of Events</div>
+          <ul class="schedule-list">
+            <li><strong data-i18n="schedTime1">09:00 AM</strong> <span data-i18n="schedDesc1">Guest Registration</span></li>
+            <li><strong data-i18n="schedTime2">10:00 AM</strong> <span data-i18n="schedDesc2">Church Ceremony</span></li>
+            <li><strong data-i18n="schedTime3">11:00 AM</strong> <span data-i18n="schedDesc3">Photo Session</span></li>
+          </ul>
+
+          <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
+
+          <div class="section-title" data-i18n="dressCodeTitle">Dress Code &amp; Theme</div>
+          <div class="palette-container">
+            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Light Grey / Silver', '#cecece', 'Pantone #cecece', 'wedding guest outfit ideas light grey silver smart casual')">
+              <div class="color-swatch" style="background-color: #cecece;"></div>
+            </button>
+            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Sage Green', '#a0cda7', 'Pantone #a0cda7', 'wedding guest outfit ideas sage green smart casual')">
+              <div class="color-swatch" style="background-color: #a0cda7;"></div>
+            </button>
+            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Baby Blue', '#c2e9ff', 'Pantone #c2e9ff', 'wedding guest outfit ideas baby blue smart casual')">
+              <div class="color-swatch" style="background-color: #c2e9ff;"></div>
+            </button>
+            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Soft Butter Yellow', '#faf9ab', 'Pantone #faf9ab', 'wedding guest outfit ideas butter yellow pastel smart casual')">
+              <div class="color-swatch" style="background-color: #faf9ab;"></div>
+            </button>
+            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Blush Pink', '#fddae8', 'Pantone #fddae8', 'wedding guest outfit ideas pastel pink blush smart casual')">
+              <div class="color-swatch" style="background-color: #fddae8;"></div>
+            </button>
+            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Warm Beige &amp; Tan', '#cbab89', 'Pantone #cbab89', 'wedding guest outfit ideas warm beige tan smart casual')">
+              <div class="color-swatch" style="background-color: #cbab89;"></div>
+            </button>
+          </div>
+          <div class="palette-hint" data-i18n="paletteHint">Tap any color for outfit inspiration</div>
+
+          <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
+
+          <div class="section-title" data-i18n="locationTitle">Location &amp; Map</div>
+          <div class="qr-container">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https://maps.app.goo.gl/YnK8gz5MQzo9c4Cn7&amp;color=38-78-54" alt="Venue QR Code">
+            <div class="qr-hint" data-i18n="qrHint">Scan with phone camera to get directions</div>
+          </div>
+
+          <div class="action-button-group">
+            <a href="https://maps.app.goo.gl/YnK8gz5MQzo9c4Cn7" target="_blank" class="map-btn">
+              <span data-i18n="openMapBtn">Open in Google Maps</span>
+            </a>
+            
+            <button type="button" class="rsvp-btn" onclick="openRsvpModal()">
+              <span data-i18n="rsvpBtn">RSVP / Respond</span>
+            </button>
+
+            <button type="button" class="faq-btn" onclick="openFaqModal()">
+              <span data-i18n="faqBtn">Wedding Q&amp;A / ข้อควรรู้</span>
+            </button>
+
+            <button type="button" class="story-btn" onclick="openStoryModal()">
+              <span data-i18n="storyBtn">Our Story / เรื่องราวของเรา</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal-backdrop" id="outfitModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeOutfitModal()">&times;</button>
+      <div class="modal-title">
+        <span class="modal-color-preview" id="modalColorPreview" style="width:20px;height:20px;border-radius:50%;display:inline-block;margin-right:8px;border:1.5px solid #F0EEE9;"></span>
+        <span id="modalColorName">Color Name</span>
+      </div>
+      <div class="modal-pantone-code" id="modalPantoneCode">Pantone Code</div>
+      <div class="outfit-grid-two">
+        <div class="outfit-item">
+          <div class="outfit-svg-box" id="svgWomenDress"></div>
+          <div class="outfit-label" data-i18n="womenDressLabel">Women: Formal Dress</div>
+        </div>
+        <div class="outfit-item">
+          <div class="outfit-svg-box" id="svgMenSmartCasual"></div>
+          <div class="outfit-label" data-i18n="menCasualLabel">Men: Smart Casual</div>
+        </div>
+      </div>
+      <a id="modalMoreLink" href="#" target="_blank" class="modal-web-link" data-i18n="exploreRefs">Explore Real Photo References &rarr;</a>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="calendarModal">
+    <div class="modal-card cal-modal-card">
+      <button class="modal-close-btn" onclick="closeCalendarModal()">&times;</button>
+      <div class="modal-title" data-i18n="calModalTitle">Add to Calendar</div>
+      <div class="modal-pantone-code" data-i18n="calModalSub">Select your calendar</div>
+      <div class="cal-option-list">
+        <button type="button" class="cal-option-btn" onclick="downloadIcsFile()">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.54c.64-.78 1.08-1.87.96-2.96-.93.04-2.05.62-2.71 1.4-.58.68-1.1 1.77-.96 2.84 1.04.08 2.08-.51 2.71-1.28z"/></svg>
+          Apple Calendar (iPhone)
+        </button>
+        <a id="googleCalLink" href="#" target="_blank" class="cal-option-btn">
+          <svg viewBox="0 0 24 24"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.761H12.545z"/></svg>
+          Google Calendar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="rsvpModal">
+    <div class="modal-card rsvp-modal-card">
+      <button class="modal-close-btn" onclick="closeRsvpModal()">&times;</button>
+      <div id="rsvpFormContainer">
+        <div class="modal-title" data-i18n="rsvpTitle">RSVP</div>
+        <div class="modal-pantone-code" style="margin-bottom:12px;" data-i18n="rsvpDeadline">Kindly reply by November 15, 2026</div>
+        <form id="weddingRsvpForm" onsubmit="handleRsvpSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="guestName" data-i18n="formNameLabel">Your Full Name *</label>
+            <input type="text" id="guestName" class="form-input" placeholder="e.g. Somchai Prasert" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="guestRelation" data-i18n="formRelationLabel">Relation / Side *</label>
+            <select id="guestRelation" class="form-select">
+              <option value="groom" data-i18n="relGroom">Groom's Side (ฝั่งเจ้าบ่าว)</option>
+              <option value="bride" data-i18n="relBride">Bride's Side (ฝั่งเจ้าสาว)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="formAttendLabel">Will you attend? *</label>
+            <div class="attendance-pills">
+              <label><input type="radio" name="attendance" value="attending" class="pill-radio" checked onchange="toggleGuestCount(true)"><span class="pill-label" data-i18n="optAttend">🤍 Joyfully Accept</span></label>
+              <label><input type="radio" name="attendance" value="uncertain" class="pill-radio" onchange="toggleGuestCount(true)"><span class="pill-label" data-i18n="optUncertain">⏳ Uncertain (Will confirm later)</span></label>
+              <label><input type="radio" name="attendance" value="declined" class="pill-radio" onchange="toggleGuestCount(false)"><span class="pill-label" data-i18n="optDecline">✉️ Regretfully Decline</span></label>
+            </div>
+          </div>
+          <div class="form-group" id="guestCountGroup">
+            <label class="form-label" for="guestCount" data-i18n="formCountLabel">Number of Guests</label>
+            <select id="guestCount" class="form-select">
+              <option value="1" data-i18n="count1">1 Person (Only me)</option>
+              <option value="2" data-i18n="count2">2 Persons (Me + 1 Guest)</option>
+              <option value="3" data-i18n="count3">3 Persons</option>
+              <option value="4" data-i18n="count4">4+ Persons</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="guestNote" data-i18n="formNoteLabel">Wishes or message for the couple</label>
+            <textarea id="guestNote" class="form-textarea" rows="2" placeholder="Leave a message for the couple..."></textarea>
+          </div>
+          <button type="submit" class="submit-rsvp-btn" data-i18n="submitBtn">Submit RSVP</button>
+        </form>
+      </div>
+      <div id="rsvpSuccessMsg" class="rsvp-success-msg">
+        <h3 data-i18n="successTitle">Thank You!</h3>
+        <p data-i18n="successMsg">We have received your response.<br>Thank you for being part of our special day.</p>
+        <div style="font-family:'Blosta Script', 'Alex Brush', cursive; font-size:32px; margin-top:16px;">Chiraporn &amp; Arunrach</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="faqModal">
+    <div class="modal-card faq-modal-card">
+      <button class="modal-close-btn" onclick="closeFaqModal()">&times;</button>
+      <div class="modal-title" data-i18n="faqModalTitle">Wedding Q&amp;A</div>
+      <div class="modal-pantone-code" data-i18n="faqModalSub">Frequently Asked Questions</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q1">1. Can I bring a plus one?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+          <div class="faq-answer" data-i18n="a1">Yes, you’re welcome to bring a plus one! Just make sure to include their name when you RSVP.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q2">2. Are kids allowed at the wedding?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+          <div class="faq-answer" data-i18n="a2">Yes! Feel free to bring your whole crew! Please help maintain a quiet atmosphere during church rites.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q3">3. What time should I arrive?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+          <div class="faq-answer" data-i18n="a3">We recommend arriving 45 minutes before the ceremony starts.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q4">4. Can I take photos or post on social media?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+          <div class="faq-answer" data-i18n="a4">Keep phones tucked away during ceremony. Tag us with #agtgth05122026 afterwards!</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q5">5. Will there be parking at the venue?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+          <div class="faq-answer" data-i18n="a5">Limited on-site parking around the cathedral (approx. 20-30 cars). Public transit via BTS Saphan Taksin (Exit 3) or express boat is recommended.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q6">6. Who should I contact if I have questions on the day?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+          <div class="faq-answer" data-i18n="a6">Contact coordinator Jame at 081-123-4567.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="storyModal">
+    <div class="modal-card story-modal-card">
+      <button class="modal-close-btn" onclick="closeStoryModal()">&times;</button>
+      <div class="modal-title" data-i18n="storyModalTitle">Our Story</div>
+      <div class="modal-pantone-code" data-i18n="storyModalSub">A Journey of Love • Since 2009</div>
+      <div class="story-slider-container" id="storySlider">
+        <div class="story-slide active"><img src="1.jpg" alt="1" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="2.jpg" alt="2" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="3.jpg" alt="3" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="4.jpg" alt="4" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="5.jpg" alt="5" onerror="this.src='couple.jpg';"></div>
+        <button type="button" class="slider-nav-btn slider-prev" onclick="prevSlide()">&#10094;</button>
+        <button type="button" class="slider-nav-btn slider-next" onclick="nextSlide()">&#10095;</button>
+        <div class="slider-dots" id="sliderDots">
+          <div class="slider-dot active" onclick="goToSlide(0)"></div>
+          <div class="slider-dot" onclick="goToSlide(1)"></div>
+          <div class="slider-dot" onclick="goToSlide(2)"></div>
+          <div class="slider-dot" onclick="goToSlide(3)"></div>
+          <div class="slider-dot" onclick="goToSlide(4)"></div>
+        </div>
+      </div>
+      <div class="story-timeline">
+        <div class="timeline-item"><div class="timeline-year">2009</div><div class="timeline-title" data-i18n="tlTitle1">The First Hello at SWU</div><div class="timeline-desc" data-i18n="tlDesc1">We first met as freshmen studying Political Science at SWU.</div></div>
+        <div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-title" data-i18n="tlTitle2">From Friends to Sweethearts</div><div class="timeline-desc" data-i18n="tlDesc2">After three years, we officially started dating.</div></div>
+        <div class="timeline-item"><div class="timeline-year">2012 – 2020</div><div class="timeline-title" data-i18n="tlTitle3">Growing Together</div><div class="timeline-desc" data-i18n="tlDesc3">Supporting each other through university and careers.</div></div>
+        <div class="timeline-item"><div class="timeline-year">2021 – 2025</div><div class="timeline-title" data-i18n="tlTitle4">14 Years of Memories</div><div class="timeline-desc" data-i18n="tlDesc4">Over a decade of travels, laughter, and adventures.</div></div>
+        <div class="timeline-item"><div class="timeline-year">DEC 5, 2026</div><div class="timeline-title" data-i18n="tlTitle5">Our Forever Begins</div><div class="timeline-desc" data-i18n="tlDesc5">Our sacred step into Holy Matrimony at Assumption Cathedral.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        waxHint: "Tap to open",
+        swipeUp: "Swipe Up",
+        invitationText: "Invite you to celebrate their love and witness their holy matrimony.",
+        dateVenueTitle: "Date & Venue",
+        eventDate: "Saturday, December 5, 2026",
+        venueName: "Assumption Cathedral, Bangkok",
+        addToCalBtn: "Add to Calendar",
+        countdownIntro: "Please join us in celebrating our love and marriage, countdown in…",
+        cdDays: "Days",
+        cdHours: "Hours",
+        cdMins: "Mins",
+        cdSecs: "Secs",
+        swipeSchedule: "Swipe for Schedule",
+        scheduleTitle: "Schedule of Events",
+        schedTime1: "09:00 AM",
+        schedDesc1: "Guest Registration",
+        schedTime2: "10:00 AM",
+        schedDesc2: "Church Ceremony",
+        schedTime3: "11:00 AM",
+        schedDesc3: "Photo Session",
+        dressCodeTitle: "Dress Code & Theme",
+        paletteHint: "Tap any color for outfit inspiration",
+        locationTitle: "Location & Map",
+        qrHint: "Scan with phone camera to get directions",
+        openMapBtn: "Open in Google Maps",
+        rsvpBtn: "RSVP / Respond",
+        faqBtn: "Wedding Q&A / FAQs",
+        storyBtn: "Our Story / Our Journey",
+        womenDressLabel: "Women: Formal Dress",
+        menCasualLabel: "Men: Smart Casual",
+        exploreRefs: "Explore Real Photo References →",
+        calModalTitle: "Add to Calendar",
+        calModalSub: "Select your calendar",
+        rsvpTitle: "RSVP",
+        rsvpDeadline: "Kindly reply by November 15, 2026",
+        formNameLabel: "Your Full Name *",
+        formRelationLabel: "Relation / Side *",
+        relGroom: "Groom's Side",
+        relBride: "Bride's Side",
+        formAttendLabel: "Will you attend? *",
+        optAttend: "🤍 Joyfully Accept",
+        optUncertain: "⏳ Uncertain (Will confirm later)",
+        optDecline: "✉️ Regretfully Decline",
+        formCountLabel: "Number of Guests",
+        count1: "1 Person (Only me)",
+        count2: "2 Persons (Me + 1 Guest)",
+        count3: "3 Persons",
+        count4: "4+ Persons",
+        formNoteLabel: "Wishes or message for the couple",
+        submitBtn: "Submit RSVP",
+        successTitle: "Thank You!",
+        successMsg: "We have received your response.<br>Thank you for being part of our special day.",
+        faqModalTitle: "Wedding Q&A",
+        faqModalSub: "Frequently Asked Questions",
+        q1: "1. Can I bring a plus one?",
+        a1: "Yes, you’re welcome to bring a plus one! Just make sure to include their name when you RSVP.",
+        q2: "2. Are kids allowed at the wedding?",
+        a2: "Yes! Feel free to bring your whole crew! Please help maintain a quiet atmosphere during church rites.",
+        q3: "3. What time should I arrive?",
+        a3: "We recommend arriving 45 minutes before the ceremony starts.",
+        q4: "4. Can I take photos or post on social media?",
+        a4: "Keep phones tucked away during ceremony. Tag us with #agtgth05122026 afterwards!",
+        q5: "5. Will there be parking at the venue?",
+        a5: "Limited on-site parking around the cathedral (approx. 20-30 cars). Public transit via BTS Saphan Taksin (Exit 3) or express boat is recommended.",
+        q6: "6. Who should I contact if I have questions on the day?",
+        a6: "Contact coordinator Jame at 081-123-4567.",
+        storyModalTitle: "Our Story",
+        storyModalSub: "A Journey of Love • Since 2009",
+        tlTitle1: "The First Hello at SWU (2009)",
+        tlDesc1: "We first met as freshmen studying Political Science at SWU.",
+        tlTitle2: "From Friends to Sweethearts (2012)",
+        tlDesc2: "After three years, we officially started dating.",
+        tlTitle3: "Growing Together Side by Side (2012 - 2020)",
+        tlDesc3: "Supporting each other through university and careers.",
+        tlTitle4: "14 Years of Memories & Adventures (2021 - 2025)",
+        tlDesc4: "Over a decade of travels and laughter.",
+        tlTitle5: "Our Forever Begins (DEC 5, 2026)",
+        tlDesc5: "Our sacred step into Holy Matrimony at Assumption Cathedral."
+      },
+      th: {
+        waxHint: "แตะเพื่อเปิดการ์ด",
+        swipeUp: "เลื่อนขึ้น",
+        invitationText: "ขอเรียนเชิญร่วมเป็นเกียรติและร่วมแสดงความยินดีในพิธีมงคลสมรส",
+        dateVenueTitle: "วันเวลาและสถานที่",
+        eventDate: "วันเสาร์ที่ 5 ธันวาคม พ.ศ. 2569",
+        venueName: "อาสนวิหารอัสสัมชัญ บางรัก กรุงเทพฯ",
+        addToCalBtn: "บันทึกลงปฏิทิน",
+        countdownIntro: "ขอเชิญทุกท่านร่วมเฉลิมฉลองความรักและการแต่งงานของเรา นับถอยหลังสู่วันงานใน...",
+        cdDays: "วัน",
+        cdHours: "ชั่วโมง",
+        cdMins: "นาที",
+        cdSecs: "วินาที",
+        swipeSchedule: "เลื่อนดูกำหนดการ",
+        scheduleTitle: "กำหนดการพิธี",
+        schedTime1: "09:00 น.",
+        schedDesc1: "ลงทะเบียนแขกผู้มีเกียรติ",
+        schedTime2: "10:00 น.",
+        schedDesc2: "พิธีมงคลสมรสในโบสถ์",
+        schedTime3: "11:00 น.",
+        schedDesc3: "ถ่ายภาพร่วมกัน",
+        dressCodeTitle: "ธีมสีการแต่งกาย",
+        paletteHint: "แตะที่เฉดสีเพื่อดูตัวอย่างชุด",
+        locationTitle: "แผนที่และสถานที่จัดงาน",
+        qrHint: "สแกนด้วยกล้องมือถือเพื่อนำทาง",
+        openMapBtn: "เปิดใน Google Maps",
+        rsvpBtn: "ตอบรับการเข้าร่วมงาน (RSVP)",
+        faqBtn: "คำถามที่พบบ่อย (Q&A)",
+        storyBtn: "เรื่องราวของเรา (Our Story)",
+        womenDressLabel: "สุภาพสตรี: ชุดเดรสทางการ",
+        menCasualLabel: "สุภาพบุรุษ: Smart Casual",
+        exploreRefs: "ดูไอเดียรูปภาพอ้างอิงเพิ่มเติม →",
+        calModalTitle: "บันทึกลงปฏิทิน",
+        calModalSub: "เลือกปฏิทินของคุณ",
+        rsvpTitle: "ตอบรับเข้าร่วมงาน (RSVP)",
+        rsvpDeadline: "กรุณาตอบรับภายในวันที่ 15 พฤศจิกายน 2569",
+        formNameLabel: "ชื่อ - นามสกุล *",
+        formRelationLabel: "ฝั่ง / ความเกี่ยวข้อง *",
+        relGroom: "ฝั่งเจ้าบ่าว",
+        relBride: "ฝั่งเจ้าสาว",
+        formAttendLabel: "ความสะดวกในการเข้าร่วมงาน *",
+        optAttend: "🤍 ยินดีมาร่วมงาน",
+        optUncertain: "⏳ ยังไม่แน่ใจ (จะแจ้งให้ทราบอีกครั้ง)",
+        optDecline: "✉️ ขออภัย ไม่สะดวกมาร่วมงาน",
+        formCountLabel: "จำนวนผู้เข้าร่วม",
+        count1: "1 ท่าน (ตนเองท่านเดียว)",
+        count2: "2 ท่าน (ตนเอง + ผู้ติดตาม 1 ท่าน)",
+        count3: "3 ท่าน",
+        count4: "4 ท่านขึ้นไป",
+        formNoteLabel: "คำอวยพรหรือข้อความที่อยากฝากถึงเราทั้งคู่",
+        submitBtn: "ส่งข้อมูลตอบรับ",
+        successTitle: "ขอบพระคุณเป็นอย่างยิ่ง",
+        successMsg: "เราได้รับข้อมูลตอบรับของท่านเรียบร้อยแล้ว<br>ยินดีและเป็นเกียรติอย่างยิ่งที่ท่านร่วมเป็นส่วนหนึ่งในวันสำคัญของเรา",
+        faqModalTitle: "คำถามที่พบบ่อย (Q&A)",
+        faqModalSub: "ข้อมูลและข้อควรรู้สำหรับแขกผู้ร่วมงาน",
+        q1: "1. สามารถพาผู้ติดตาม (Plus One) มาได้ไหม?",
+        a1: "ยินดีต้อนรับผู้ติดตามของท่านเป็นอย่างยิ่งครับ! เพียงระบุชื่อและจำนวนในแบบฟอร์มตอบรับ (RSVP)",
+        q2: "2. สามารถพาเด็กๆ มาร่วมงานได้หรือไม่?",
+        a2: "ยินดีต้อนรับน้องๆ ทุกคนครับ! ขอความกรุณาผู้ปกครองช่วยดูแลความสงบเรียบร้อยภายในโบสถ์",
+        q3: "3. ควรเดินทางมาถึงเวลากี่โมง?",
+        a3: "แนะนำให้มาถึงก่อนเวลาเริ่มพิธีประมาณ 45 นาที (ประมาณ 09:15 น.)",
+        q4: "4. สามารถถ่ายรูปหรือโพสต์ลงโซเชียลมีเดียได้ไหม?",
+        a4: "งดถ่ายภาพช่วงพิธีการในโบสถ์ หลังจากนั้นแชร์และติดแฮชแท็ก <strong>#agtgth05122026</strong> ได้เลยครับ",
+        q5: "5. มีที่จอดรถและเดินทางอย่างไร?",
+        a5: "พื้นที่รอบๆโบสถ์รองรับได้ราวๆ 20 - 30 คัน หรือเดินทางด้วย BTS สะพานตากสิน (ทางออก 3) และเรือด่วน",
+        q6: "6. หากมีข้อสงสัยในวันงาน สามารถติดต่อใครได้บ้าง?",
+        a6: "ติดต่อคุณ Jame (ผู้ประสานงาน) ที่เบอร์ 081-123-4567 ครับ",
+        storyModalTitle: "เรื่องราวของเรา",
+        storyModalSub: "การเดินทางแห่งความรัก • ตั้งแต่ปี 2009",
+        tlTitle1: "จุดเริ่มต้นที่ มศว (2009)",
+        tlDesc1: "เราพบกันครั้งแรกในฐานะเพื่อนร่วมรุ่น คณะรัฐศาสตร์ มศว",
+        tlTitle2: "จากเพื่อนสู่คนรู้ใจ (2012)",
+        tlDesc2: "หลังจากเป็นเพื่อนสนิทกันมา 3 ปี เราตัดสินใจคบกันเป็นคนรัก",
+        tlTitle3: "เติบโตร่วมกันในทุกช่วงวัย (2012 – 2020)",
+        tlDesc3: "คอยเป็นกำลังใจและอยู่เคียงข้างกันในทุกก้าวสำคัญ",
+        tlTitle4: "14 ปีแห่งความทรงจำ (2021 – 2025)",
+        tlDesc4: "กว่าทศวรรษที่เราได้ออกเดินทางและสร้างความทรงจำร่วมกัน",
+        tlTitle5: "บทเริ่มต้นของคำว่าตลอดไป (5 ธันวาคม 2569)",
+        tlDesc5: "พิธีมงคลสมรส ณ อาสนวิหารอัสสัมชัญ"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      if (lang === 'en') {
+        document.getElementById('optEN').classList.add('active');
+        document.getElementById('optTH').classList.remove('active');
+      } else {
+        document.getElementById('optTH').classList.add('active');
+        document.getElementById('optEN').classList.remove('active');
+      }
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+    }
+
+    const langSwitcherBtn = document.getElementById('langSwitcherBtn');
+    langSwitcherBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setLanguage(currentLang === 'en' ? 'th' : 'en');
+    });
+
+    const openBtn = document.getElementById('openBtn');
+    const scene = document.getElementById('invitationScene');
+    const cardWrapper = document.getElementById('cardWrapper');
+    const modal = document.getElementById('outfitModal');
+    const calModal = document.getElementById('calendarModal');
+    const rsvpModal = document.getElementById('rsvpModal');
+    const faqModal = document.getElementById('faqModal');
+    const storyModal = document.getElementById('storyModal');
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggleBtn = document.getElementById('musicToggleBtn');
+
+    let isMusicPlaying = false;
+
+    function playBackgroundMusic() {
+      if (!isMusicPlaying) {
+        bgMusic.volume = 0.35;
+        bgMusic.play().then(() => {
+          isMusicPlaying = true;
+          musicToggleBtn.classList.add('playing', 'visible');
+          langSwitcherBtn.classList.add('visible');
+        }).catch(err => {
+          console.log("Audio play request deferred:", err);
+          musicToggleBtn.classList.add('visible');
+          langSwitcherBtn.classList.add('visible');
+        });
+      }
+    }
+
+    musicToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (bgMusic.paused) {
+        bgMusic.play();
+        isMusicPlaying = true;
+        musicToggleBtn.classList.add('playing');
+      } else {
+        bgMusic.pause();
+        isMusicPlaying = false;
+        musicToggleBtn.classList.remove('playing');
+      }
+    });
+
+    openBtn.addEventListener('click', () => {
+      scene.classList.add('opening');
+      playBackgroundMusic();
+
+      setTimeout(() => {
+        scene.classList.add('fully-opened');
+        cardWrapper.scrollTop = 0;
+      }, 850);
+    });
+
+    // Countdown Timer
+    const targetDate = new Date('2026-12-05T09:00:00+07:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        document.getElementById('cdDays').innerText = "00";
+        document.getElementById('cdHours').innerText = "00";
+        document.getElementById('cdMins').innerText = "00";
+        document.getElementById('cdSecs').innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('cdDays').innerText = String(days).padStart(2, '0');
+      document.getElementById('cdHours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('cdMins').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('cdSecs').innerText = String(seconds).padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function adjustBrightness(hex, percent) {
+      let num = parseInt(hex.replace("#",""), 16),
+      amt = Math.round(2.55 * percent),
+      R = (num >> 16) + amt,
+      G = (num >> 8 & 0x00FF) + amt,
+      B = (num & 0x0000FF) + amt;
+      return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
+    }
+
+    function generateWomenDressSvg(colorHex) {
+      const shadow = adjustBrightness(colorHex, -22);
+      const highlight = adjustBrightness(colorHex, 15);
+      return `
+        <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+          <path d="M42,16 Q50,10 58,16" stroke="#F0EEE9" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <path d="M38,28 L44,54 L56,54 L62,28 Q50,34 38,28 Z" fill="${colorHex}" stroke="${shadow}" stroke-width="1"/>
+          <path d="M43,54 L57,54 L58,60 L42,60 Z" fill="${shadow}"/>
+          <path d="M42,60 Q22,108 18,136 Q50,142 82,136 Q78,108 58,60 Z" fill="${colorHex}" stroke="${shadow}" stroke-width="1"/>
+          <path d="M46,60 Q38,102 34,138" stroke="${shadow}" stroke-width="1" fill="none" opacity="0.6"/>
+          <path d="M50,60 Q50,102 50,139" stroke="${highlight}" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M54,60 Q62,102 66,138" stroke="${shadow}" stroke-width="1" fill="none" opacity="0.6"/>
+        </svg>`;
+    }
+
+    function generateMenSmartCasualSvg(colorHex) {
+      const shadow = adjustBrightness(colorHex, -25);
+      const darkPants = "#2d3832";
+      return `
+        <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="42,18 58,18 54,28 46,28" fill="${shadow}"/>
+          <polygon points="46,28 54,28 50,34" fill="#FFFFFF"/>
+          <path d="M28,26 L42,18 L58,18 L72,26 L68,74 L32,74 Z" fill="${colorHex}" stroke="${shadow}" stroke-width="1"/>
+          <path d="M28,26 L18,44 L24,50 L31,38" fill="${colorHex}" stroke="${shadow}" stroke-width="0.8"/>
+          <rect x="17" y="44" width="8" height="5" fill="${shadow}" rx="1"/>
+          <path d="M72,26 L82,44 L76,50 L69,38" fill="${colorHex}" stroke="${shadow}" stroke-width="0.8"/>
+          <rect x="75" y="44" width="8" height="5" fill="${shadow}" rx="1"/>
+          <line x1="50" y1="28" x2="50" y2="74" stroke="${shadow}" stroke-width="1.2" stroke-dasharray="2,5"/>
+          <rect x="32" y="74" width="36" height="4" fill="#6d4b06"/>
+          <rect x="47" y="73" width="6" height="6" fill="#d4af37" rx="1"/>
+          <path d="M32,78 L48,78 L47,138 L34,138 Z" fill="${darkPants}"/>
+          <path d="M52,78 L68,78 L66,138 L53,138 Z" fill="${darkPants}"/>
+          <ellipse cx="40" cy="141" rx="7" ry="3" fill="#1b241e"/>
+          <ellipse cx="60" cy="141" rx="7" ry="3" fill="#1b241e"/>
+        </svg>`;
+    }
+
+    function openOutfitModal(name, hex, pantone, query) {
+      document.getElementById('modalColorName').innerText = name;
+      document.getElementById('modalPantoneCode').innerText = pantone;
+      document.getElementById('modalColorPreview').style.backgroundColor = hex;
+      document.getElementById('svgWomenDress').innerHTML = generateWomenDressSvg(hex);
+      document.getElementById('svgMenSmartCasual').innerHTML = generateMenSmartCasualSvg(hex);
+      document.getElementById('modalMoreLink').href = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(query)}`;
+      modal.classList.add('active');
+    }
+
+    function closeOutfitModal() { modal.classList.remove('active'); }
+
+    function openCalendarModal() {
+      const title = encodeURIComponent(currentLang === 'en' ? "Wedding Celebration | Chiraporn & Arunrach" : "พิธีมงคลสมรส | จิราพร & อรุณรัชช์");
+      const details = encodeURIComponent(currentLang === 'en' ? "Wedding Ceremony of Chiraporn & Arunrach\n09:00 AM Registration\n10:00 AM Church Ceremony\nWebsite: https://agtgth.com" : "พิธีมงคลสมรส จิราพร & อรุณรัชช์\n09:00 น. ลงทะเบียน\n10:00 น. พิธีในโบสถ์\nเว็บไซต์: https://agtgth.com");
+      const location = encodeURIComponent("Assumption Cathedral, Bangkok, Thailand");
+      const dates = "20261205T020000Z/20261205T060000Z";
+      document.getElementById('googleCalLink').href = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+      calModal.classList.add('active');
+    }
+
+    function closeCalendarModal() { calModal.classList.remove('active'); }
+
+    function downloadIcsFile() {
+      const isEn = currentLang === 'en';
+      const summary = isEn ? "Wedding: Chiraporn & Arunrach" : "พิธีมงคลสมรส: จิราพร & อรุณรัชช์";
+      const desc = isEn ? 
+        "Wedding Ceremony of Chiraporn & Arunrach\\n09:00 AM Registration\\n10:00 AM Church Ceremony\\nWebsite: https://agtgth.com" : 
+        "พิธีมงคลสมรส จิราพร & อรุณรัชช์\\n09:00 น. ลงทะเบียน\\n10:00 น. พิธีในโบสถ์\\nเว็บไซต์: https://agtgth.com";
+
+      const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//AGTGTH Wedding//Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:${summary}
+DESCRIPTION:${desc}
+LOCATION:Assumption Cathedral, Bangkok
+DTSTART:20261205T020000Z
+DTEND:20261205T060000Z
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-P1D
+DESCRIPTION:Reminder: Chiraporn & Arunrach Wedding Tomorrow
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'Chiraporn_Arunrach_Wedding.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      closeCalendarModal();
+    }
+
+    function openRsvpModal() { rsvpModal.classList.add('active'); }
+    function closeRsvpModal() { rsvpModal.classList.remove('active'); }
+
+    function toggleGuestCount(show) {
+      document.getElementById('guestCountGroup').style.display = show ? 'block' : 'none';
+    }
+
+    function handleRsvpSubmit(e) {
+      e.preventDefault();
+      const guestName = document.getElementById('guestName').value;
+      const guestRelation = document.getElementById('guestRelation').value;
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const guestCount = document.getElementById('guestCount').value;
+      const guestNote = document.getElementById('guestNote').value;
+
+      document.getElementById('rsvpFormContainer').style.display = 'none';
+      document.getElementById('rsvpSuccessMsg').style.display = 'block';
+
+      setTimeout(() => {
+        closeRsvpModal();
+        setTimeout(() => {
+          document.getElementById('rsvpFormContainer').style.display = 'block';
+          document.getElementById('rsvpSuccessMsg').style.display = 'none';
+          document.getElementById('weddingRsvpForm').reset();
+        }, 500);
+      }, 3500);
+    }
+
+    function openFaqModal() { faqModal.classList.add('active'); }
+    function closeFaqModal() { faqModal.classList.remove('active'); }
+
+    function toggleFaq(el) {
+      const parent = el.parentElement;
+      const isActive = parent.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+      if (!isActive) parent.classList.add('active');
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.story-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+
+    function openStoryModal() {
+      storyModal.classList.add('active');
+      showSlide(currentSlide);
+    }
+
+    function closeStoryModal() { storyModal.classList.remove('active'); }
+
+    function showSlide(index) {
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    function goToSlide(index) { showSlide(index); }
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const sliderBox = document.getElementById('storySlider');
+
+    sliderBox.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    sliderBox.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 40) nextSlide();
+      if (touchEndX > touchStartX + 40) prevSlide();
+    }, { passive: true });
+
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeOutfitModal(); });
+    calModal.addEventListener('click', (e) => { if (e.target === calModal) closeCalendarModal(); });
+    rsvpModal.addEventListener('click', (e) => { if (e.target === rsvpModal) closeRsvpModal(); });
+    faqModal.addEventListener('click', (e) => { if (e.target === faqModal) closeFaqModal(); });
+    storyModal.addEventListener('click', (e) => { if (e.target === storyModal) closeStoryModal(); });
+  </script>
+</body>
+</html>
