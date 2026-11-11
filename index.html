@@ -1418,15 +1418,11 @@
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q4">4. Can I take photos or post on social media?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
-          <div class="faq-answer" data-i18n="a4">Keep phones tucked away during ceremony. Tag us with #agtgth05122026 afterwards!</div>
+          <div class="faq-answer" data-i18n="a4">Feel free to capture photos or videos throughout the ceremony! Please tag us with #agtgth so we can cherish these special moments together.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q5">5. Will there be parking at the venue?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
           <div class="faq-answer" data-i18n="a5">Limited on-site parking around the cathedral (approx. 20-30 cars). Public transit via BTS Saphan Taksin (Exit 3) or express boat is recommended.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q6">6. Who should I contact if I have questions on the day?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
-          <div class="faq-answer" data-i18n="a6">Contact coordinator Jame at 081-123-4567.</div>
         </div>
       </div>
     </div>
@@ -1527,11 +1523,9 @@
         q3: "3. What time should I arrive?",
         a3: "We recommend arriving 45 minutes before the ceremony starts.",
         q4: "4. Can I take photos or post on social media?",
-        a4: "Keep phones tucked away during ceremony. Tag us with #agtgth05122026 afterwards!",
+        a4: "Feel free to capture photos or videos throughout the ceremony! Please tag us with #agtgth so we can cherish these special moments together.",
         q5: "5. Will there be parking at the venue?",
         a5: "Limited on-site parking around the cathedral (approx. 20-30 cars). Public transit via BTS Saphan Taksin (Exit 3) or express boat is recommended.",
-        q6: "6. Who should I contact if I have questions on the day?",
-        a6: "Contact coordinator Jame at 081-123-4567.",
         storyModalTitle: "Our Story",
         storyModalSub: "A Journey of Love • Since 2009",
         tlTitle1: "The First Hello at SWU (2009)",
@@ -1607,11 +1601,9 @@
         q3: "3. ควรเดินทางมาถึงเวลากี่โมง?",
         a3: "แนะนำให้มาถึงก่อนเวลาเริ่มพิธีประมาณ 45 นาที (ประมาณ 09:15 น.)",
         q4: "4. สามารถถ่ายรูปหรือโพสต์ลงโซเชียลมีเดียได้ไหม?",
-        a4: "งดถ่ายภาพช่วงพิธีการในโบสถ์ หลังจากนั้นแชร์และติดแฮชแท็ก <strong>#agtgth05122026</strong> ได้เลยครับ",
+        a4: "สามารถถ่ายภาพหรือวิดีโอในระหว่างพิธีได้ตามสบายเลยครับ และช่วยติดแฮชแท็ก <strong>#agtgth</strong> พร้อมแท็กหาเราทั้งคู่ เพื่อเก็บภาพความทรงจำและช่วงเวลาดีๆ ร่วมกันได้เลย!",
         q5: "5. มีที่จอดรถและเดินทางอย่างไร?",
         a5: "พื้นที่รอบๆโบสถ์รองรับได้ราวๆ 20 - 30 คัน หรือเดินทางด้วย BTS สะพานตากสิน (ทางออก 3) และเรือด่วน",
-        q6: "6. หากมีข้อสงสัยในวันงาน สามารถติดต่อใครได้บ้าง?",
-        a6: "ติดต่อคุณ Jame (ผู้ประสานงาน) ที่เบอร์ 081-123-4567 ครับ",
         storyModalTitle: "เรื่องราวของเรา",
         storyModalSub: "การเดินทางแห่งความรัก • ตั้งแต่ปี 2009",
         tlTitle1: "จุดเริ่มต้นที่ มศว (2009)",
@@ -1848,23 +1840,38 @@ END:VCALENDAR`;
 
     function handleRsvpSubmit(e) {
       e.preventDefault();
-      const guestName = document.getElementById('guestName').value;
-      const guestRelation = document.getElementById('guestRelation').value;
-      const attendance = document.querySelector('input[name="attendance"]:checked').value;
-      const guestCount = document.getElementById('guestCount').value;
-      const guestNote = document.getElementById('guestNote').value;
+      
+      const formData = {
+        name: document.getElementById('guestName').value,
+        relation: document.getElementById('guestRelation').value,
+        attendance: document.querySelector('input[name="attendance"]:checked').value,
+        guestCount: document.getElementById('guestCount').value,
+        note: document.getElementById('guestNote').value
+      };
 
-      document.getElementById('rsvpFormContainer').style.display = 'none';
-      document.getElementById('rsvpSuccessMsg').style.display = 'block';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxRSkS1zfVqU-Fio_JXf8VqzFkWOAJVdHgMafg_k4bHkIWLIm1KOLV7ebCWnjeWde3zdg/exec';
 
-      setTimeout(() => {
-        closeRsvpModal();
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      }).then(() => {
+        document.getElementById('rsvpFormContainer').style.display = 'none';
+        document.getElementById('rsvpSuccessMsg').style.display = 'block';
+
         setTimeout(() => {
-          document.getElementById('rsvpFormContainer').style.display = 'block';
-          document.getElementById('rsvpSuccessMsg').style.display = 'none';
-          document.getElementById('weddingRsvpForm').reset();
-        }, 500);
-      }, 3500);
+          closeRsvpModal();
+          setTimeout(() => {
+            document.getElementById('rsvpFormContainer').style.display = 'block';
+            document.getElementById('rsvpSuccessMsg').style.display = 'none';
+            document.getElementById('weddingRsvpForm').reset();
+          }, 500);
+        }, 3500);
+      }).catch(error => {
+        console.error('Error!', error.message);
+        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      });
     }
 
     function openFaqModal() { faqModal.classList.add('active'); }
