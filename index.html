@@ -489,7 +489,7 @@
       margin-top: 2px;
     }
 
-    /* SESSION 3: กำหนดการ + ธีมสี + ปุ่ม Q&A และ Our Journey */
+    /* SESSION 3: กำหนดการ + ธีมสี + ปุ่ม Our Journey และ Q&A */
     .session-3-inner {
       width: 100%;
       height: 100%;
@@ -1259,7 +1259,7 @@
         </div>
       </section>
 
-      <!-- SESSION 3: กำหนดการ & ธีมสี & ปุ่ม Q&A + Our Journey -->
+      <!-- SESSION 3: กำหนดการ & ธีมสี & ปุ่ม Our Journey ขึ้นก่อน แล้วตามด้วย Q&A -->
       <section class="session session-3" id="session3">
         <div class="session-3-inner">
           <div>
@@ -1301,12 +1301,12 @@
           <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
 
           <div class="action-button-group">
-            <button type="button" class="faq-btn" onclick="openFaqModal()">
-              <span data-i18n="faqBtn">Wedding Q&amp;A / ข้อควรรู้</span>
-            </button>
-
             <button type="button" class="story-btn" onclick="openStoryModal()">
               <span data-i18n="storyBtn">Our Journey</span>
+            </button>
+
+            <button type="button" class="faq-btn" onclick="openFaqModal()">
+              <span data-i18n="faqBtn">Wedding Q&amp;A / ข้อควรรู้</span>
             </button>
           </div>
 
@@ -1506,11 +1506,11 @@
       <div class="faq-list">
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q1">1. Can I bring a plus one?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
-          <div class="faq-answer" data-i18n="a1">Yes, you’re welcome to bring a plus one! Just make sure to include their name when you RSVP.</div>
+          <div class="faq-answer" data-i18n="a1">Yes, you’re welcome to bring a plus one! Please kindly include their name and details when you RSVP so we can properly prepare for your group.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q2">2. Are kids allowed at the wedding?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
-          <div class="faq-answer" data-i18n="a2">Yes! Feel free to bring your whole crew! However, please help maintain a quiet atmosphere during church rites.</div>
+          <div class="faq-answer" data-i18n="a2">Yes, kids are very welcome! However, since the ceremony takes place inside a church, we kindly ask parents to help keep a gentle and quiet atmosphere during the holy rites.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q3">3. What time should I arrive?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
@@ -1523,6 +1523,10 @@
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q5">5. Will there be parking at the venue?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
           <div class="faq-answer" data-i18n="a5">Limited on-site parking around the cathedral (approx. 20-30 cars). Public transit via BTS Saphan Taksin (Exit 3) or express boat is recommended.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q6">6. Can I attend the ceremony if I practice a different religion?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
+          <div class="faq-answer" data-i18n="a6">Both of us warmly welcome everyone and are delighted to have you witness our wedding. Everyone can join the church ceremony and simply follow the guidance of the presider.</div>
         </div>
       </div>
     </div>
@@ -1641,15 +1645,17 @@
         faqModalTitle: "Wedding Q&A",
         faqModalSub: "Frequently Asked Questions",
         q1: "1. Can I bring a plus one?",
-        a1: "Yes, you’re welcome to bring a plus one! Just make sure to include their name when you RSVP.",
+        a1: "Yes, you’re welcome to bring a plus one! Please kindly include their name and details when you RSVP so we can properly prepare for your group.",
         q2: "2. Are kids allowed at the wedding?",
-        a2: "Yes! Feel free to bring your whole crew! However, please help maintain a quiet atmosphere during church rites.",
+        a2: "Yes, kids are very welcome! However, since the ceremony takes place inside a church, we kindly ask parents to help keep a gentle and quiet atmosphere during the holy rites.",
         q3: "3. What time should I arrive?",
         a3: "We recommend arriving 45 minutes before the ceremony starts.",
         q4: "4. Can I take photos or post on social media?",
         a4: "Feel free to capture photos or videos throughout the ceremony! Please tag us with #agtgth so we can cherish these special moments together.",
         q5: "5. Will there be parking at the venue?",
         a5: "Limited on-site parking around the cathedral (approx. 20-30 cars). Public transit via BTS Saphan Taksin (Exit 3) or express boat is recommended.",
+        q6: "6. Can I attend the ceremony if I practice a different religion?",
+        a6: "Both of us warmly welcome everyone and are delighted to have you witness our wedding. Everyone can join the church ceremony and simply follow the guidance of the presider.",
         storyModalTitle: "Our Journey",
         storyModalSub: "AGTGTH Photo Gallery"
       },
@@ -1717,16 +1723,18 @@
         successMsg: "เราได้รับข้อมูลตอบรับของท่านเรียบร้อยแล้ว<br>ยินดีและเป็นเกียรติอย่างยิ่งที่ท่านร่วมเป็นส่วนหนึ่งในวันสำคัญของเรา",
         faqModalTitle: "คำถามที่พบบ่อย (Q&A)",
         faqModalSub: "ข้อมูลและข้อควรรู้สำหรับแขกผู้ร่วมงาน",
-        q1: "1. สามารถพาผู้ติดตาม (Plus One) มาได้ไหม?",
-        a1: "ยินดีต้อนรับผู้ติดตามของท่านเป็นอย่างยิ่งครับ! เพียงระบุชื่อและจำนวนในแบบฟอร์มตอบรับ (RSVP)",
+        q1: "1. สามารถพาผู้ติดตามมาร่วมงานได้ไหม?",
+        a1: "ยินดีต้อนรับผู้ติดตามของทุกคนครับ เพียงระบุชื่อและจำนวนในแบบฟอร์มตอบรับ เพื่อให้เราช่วยจัดเตรียมสถานที่ไว้ต้อนรับอย่างเหมาะสมครับ",
         q2: "2. สามารถพาเด็กๆ มาร่วมงานได้หรือไม่?",
-        a2: "ยินดีต้อนรับน้องๆ ทุกคนครับ! ขอความกรุณาผู้ปกครองช่วยดูแลความสงบเรียบร้อยภายในโบสถ์",
+        a2: "ยินดีต้อนรับน้องๆ ทุกคนเลยครับ! อย่างไรก็ดี เนื่องจากเป็นพิธีอันศักดิ์สิทธิ์ที่จัดขึ้นภายในโบสถ์ ขอความกรุณาคุณพ่อคุณแม่และผู้ปกครองช่วยดูแลความสงบเรียบร้อยร่วมกัน เพื่อบรรยากาศที่อบอุ่นและราบรื่นในพิธีครับ",
         q3: "3. ควรเดินทางมาถึงเวลากี่โมง?",
         a3: "แนะนำให้มาถึงก่อนเวลาเริ่มพิธีประมาณ 45 นาที (ประมาณ 09:15 น.)",
         q4: "4. สามารถถ่ายรูปหรือโพสต์ลงโซเชียลมีเดียได้ไหม?",
         a4: "สามารถถ่ายภาพหรือวิดีโอในระหว่างพิธีได้ตามสบายเลยครับ และช่วยติดแฮชแท็ก <strong>#agtgth</strong> พร้อมแท็กหาเราทั้งคู่ เพื่อเก็บภาพความทรงจำและช่วงเวลาดีๆ ร่วมกันได้เลย!",
         q5: "5. มีที่จอดรถและเดินทางอย่างไร?",
         a5: "พื้นที่รอบๆโบสถ์รองรับได้ราวๆ 20 - 30 คัน หรือเดินทางด้วย BTS สะพานตากสิน (ทางออก 3) และเรือด่วน",
+        q6: "6. หากนับถือศาสนาอื่น สามารถเข้าร่วมพิธีได้หรือไม่?",
+        a6: "เราทั้งสองคนยินดีต้อนรับและดีใจที่ทุกคนจะมาร่วมเป็นสักขีพยานในงานของเรา โดยทุกคนสามารถร่วมพิธีการในโบสถ์และปฏิบัติตามที่ผู้นำพิธีแนะนำได้เลยครับ",
         storyModalTitle: "เส้นทางของเรา",
         storyModalSub: "แกลเลอรีภาพความประทับใจ AGTGTH"
       }
