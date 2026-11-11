@@ -275,29 +275,30 @@
       overflow: hidden;
     }
 
-    /* SESSION 1 */
+    /* SESSION 1: ขยายรูปให้ใหญ่เต็มพื้นที่มากขึ้นหลังเอาลูกไม้ออก */
     .session-1-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       width: 100%;
       height: 100%;
-      max-height: 660px;
-      max-width: 350px;
-      gap: 8px;
+      max-height: 760px;
+      max-width: 400px;
+      gap: 12px;
+      padding-top: 4px;
     }
 
     .couple-photo-wrapper {
-      width: 88%;
-      max-width: 320px;
+      width: 94%;
+      max-width: 380px;
       flex: 1 1 auto;
-      min-height: 200px;
-      max-height: 440px;
-      border-radius: 12px;
+      min-height: 260px;
+      max-height: 76vh;
+      border-radius: 14px;
       overflow: hidden;
       border: 1.5px solid rgba(240, 238, 233, 0.9);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
       background: #1d3c2a;
       display: flex;
       justify-content: center;
@@ -310,17 +311,6 @@
       object-fit: cover;
       object-position: center;
       display: block;
-    }
-
-    .lace-under-photo {
-      width: 80%;
-      max-width: 270px;
-      height: 40px;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
-      opacity: 0.95;
-      pointer-events: none;
-      flex-shrink: 0;
     }
 
     /* ปุ่มแนะนำเลื่อนหน้า */
@@ -604,7 +594,7 @@
       color: #F0EEE9;
     }
 
-    /* กรอบแผนที่ Google Maps ขยายใหญ่สมดุลเหมือนภาพตัวอย่าง */
+    /* กรอบแผนที่ Google Maps */
     .map-embed-wrapper {
       position: relative;
       width: 96%;
@@ -1200,13 +1190,12 @@
     <!-- แผ่นการ์ดด้านใน (4 Sessions) -->
     <div class="invitation-card-wrapper" id="cardWrapper">
 
-      <!-- SESSION 1: รูปภาพคู่บ่าวสาว -->
+      <!-- SESSION 1: รูปภาพคู่บ่าวสาวขยายใหญ่เต็มพื้นที่ (เอา lace.png ออกเฉพาะหน้านี้) -->
       <section class="session session-1" id="session1">
         <div class="session-1-inner">
           <div class="couple-photo-wrapper">
             <img src="couple.jpg" alt="Chiraporn &amp; Arunrach" class="couple-photo">
           </div>
-          <img src="lace.png" alt="Bridal Lace" class="lace-under-photo">
           <div class="scroll-down-hint" onclick="scrollToSession('session2')">
             <span data-i18n="swipeUp">Swipe Up</span>
             <div class="scroll-arrow"></div>
@@ -1521,7 +1510,7 @@
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q2">2. Are kids allowed at the wedding?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
-          <div class="faq-answer" data-i18n="a2">Yes! Feel free to bring your whole crew! Please help maintain a quiet atmosphere during church rites.</div>
+          <div class="faq-answer" data-i18n="a2">Yes! Feel free to bring your whole crew! However, please help maintain a quiet atmosphere during church rites.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="q3">3. What time should I arrive?</span><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></div>
@@ -1654,7 +1643,7 @@
         q1: "1. Can I bring a plus one?",
         a1: "Yes, you’re welcome to bring a plus one! Just make sure to include their name when you RSVP.",
         q2: "2. Are kids allowed at the wedding?",
-        a2: "Yes! Feel free to bring your whole crew! Please help maintain a quiet atmosphere during church rites.",
+        a2: "Yes! Feel free to bring your whole crew! However, please help maintain a quiet atmosphere during church rites.",
         q3: "3. What time should I arrive?",
         a3: "We recommend arriving 45 minutes before the ceremony starts.",
         q4: "4. Can I take photos or post on social media?",
