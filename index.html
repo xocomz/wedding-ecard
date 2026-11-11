@@ -47,7 +47,7 @@
     }
 
     /* ========================================================
-       โครงสร้างหลัก: มือถือเต็มจอ / คอมพิวเตอร์เป็นกรอบการ์ดสมส่วน
+       โครงสร้างหลัก: มือถือเต็มจอ / คอมพิวเตอร์เป็นกรอบการ์ด 9:16
        ======================================================== */
     .scene-container {
       position: relative;
@@ -60,11 +60,10 @@
       background-color: #264e36;
     }
 
-    /* สำหรับหน้าจอคอมพิวเตอร์ Notebook และ iPad แนวนอน */
     @media (min-width: 521px) {
       .scene-container {
         height: min(92vh, 860px);
-        width: calc(min(92vh, 860px) * 0.5625); /* อัตราส่วน 9:16 มาตรฐานการ์ดมือถือ */
+        width: calc(min(92vh, 860px) * 0.5625);
         max-width: 440px;
         min-width: 350px;
         border-radius: 26px;
@@ -72,7 +71,7 @@
       }
     }
 
-    /* ปุ่มควบคุมมุมบน: เกาะติดอยู่ในกรอบการ์ดเสมอทั้งมือถือและคอม */
+    /* ปุ่มควบคุมมุมบน */
     .top-floating-bar {
       position: absolute;
       top: calc(14px + env(safe-area-inset-top, 0px));
@@ -259,7 +258,7 @@
       transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
     }
 
-    /* โครงสร้างแต่ละหน้า (Session 1 - 3) */
+    /* โครงสร้างแต่ละหน้า (Session 1 - 4) */
     .session {
       width: 100%;
       height: 100%;
@@ -276,7 +275,7 @@
       overflow: hidden;
     }
 
-    /* SESSION 1: รูปภาพยืดหยุ่นอัตโนมัติด้วย Flex ไม่ดันปุ่มตกขอบทั้งในมือถือและคอม */
+    /* SESSION 1 */
     .session-1-inner {
       display: flex;
       flex-direction: column;
@@ -396,9 +395,9 @@
     }
 
     .lace-divider-img {
-      width: 68%;
-      max-width: 220px;
-      height: 22px;
+      width: 72%;
+      max-width: 240px;
+      height: 24px;
       object-fit: contain;
       margin: 0 auto;
       display: block;
@@ -409,11 +408,12 @@
     }
 
     .section-title {
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #F0EEE9;
       font-weight: bold;
+      margin-bottom: 4px;
     }
 
     .event-info {
@@ -499,45 +499,45 @@
       margin-top: 2px;
     }
 
-    /* SESSION 3 */
+    /* SESSION 3: กำหนดการ + ธีมสี + ปุ่ม Q&A และ Our Journey */
     .session-3-inner {
       width: 100%;
       height: 100%;
-      max-height: 660px;
+      max-height: 650px;
       max-width: 350px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
-      gap: 2px;
+      gap: 4px;
     }
 
     .schedule-list {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 4px 0 0 0;
       text-align: left;
       display: inline-block;
     }
 
     .schedule-list li {
-      font-size: 12px;
-      padding: 1.5px 0;
+      font-size: 13px;
+      padding: 3px 0;
       color: rgba(240, 238, 233, 0.95);
     }
 
     .schedule-list strong {
       display: inline-block;
-      width: 80px;
-      color: #F0EEE9;
+      width: 86px;
+      color: #faf9ab;
     }
 
     .palette-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
-      margin: 2px auto;
+      gap: 9px;
+      margin: 6px auto 4px auto;
       flex-wrap: wrap;
     }
 
@@ -555,59 +555,120 @@
     }
 
     .color-swatch {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       border: 2px solid #F0EEE9;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
     }
 
     .palette-hint {
-      font-size: 9.5px;
+      font-size: 10.5px;
       letter-spacing: 0.8px;
-      color: rgba(240, 238, 233, 0.82);
+      color: rgba(240, 238, 233, 0.85);
       font-style: italic;
     }
 
-    .qr-container {
-      margin: 0;
+    /* SESSION 4: แผนที่ขนาดใหญ่เต็มตา + ปุ่ม RSVP & ส่งสลิป */
+    .session-4-inner {
+      width: 100%;
+      height: 100%;
+      max-height: 680px;
+      max-width: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      gap: 10px;
     }
 
-    .qr-container img {
-      width: 64px;
-      height: 64px;
-      border-radius: 8px;
+    .venue-pin-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .venue-pin-icon {
+      width: 24px;
+      height: 24px;
+      fill: #faf9ab;
+      margin-bottom: 2px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    .venue-sub-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #F0EEE9;
+    }
+
+    /* กรอบแผนที่ Google Maps ขยายใหญ่สมดุลเหมือนภาพตัวอย่าง */
+    .map-embed-wrapper {
+      position: relative;
+      width: 96%;
+      max-width: 340px;
+      flex: 1 1 auto;
+      min-height: 220px;
+      max-height: 350px;
+      border-radius: 14px;
+      overflow: hidden;
       border: 2px solid rgba(240, 238, 233, 0.9);
-      padding: 3px;
-      background: #F0EEE9;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      background: #e5e3df;
     }
 
-    .qr-hint {
-      font-size: 9px;
-      color: rgba(240, 238, 233, 0.8);
-      margin-top: 1px;
-      font-style: italic;
+    .map-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .floating-open-map {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #1a73e8;
+      font-family: 'Sarabun', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      z-index: 5;
+      transition: transform 0.2s;
+    }
+
+    .floating-open-map:hover {
+      transform: scale(1.03);
     }
 
     .action-button-group {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       width: 100%;
+      flex-shrink: 0;
     }
 
-    .map-btn, .rsvp-btn, .faq-btn, .story-btn {
+    .rsvp-btn, .wish-slip-btn, .faq-btn, .story-btn {
       display: inline-flex;
       justify-content: center;
       align-items: center;
       gap: 6px;
-      width: 215px;
-      padding: 7px 0;
-      font-size: 10.5px;
+      width: 245px;
+      padding: 9px 12px;
+      font-size: 11px;
       font-family: 'Cinzel', 'Sarabun', serif;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
       text-decoration: none;
       border-radius: 24px;
@@ -618,21 +679,21 @@
       border: none;
     }
 
-    .map-btn {
+    .rsvp-btn {
       color: #264e36;
       background-color: #F0EEE9;
     }
 
-    .rsvp-btn {
-      color: #F0EEE9;
-      background-color: rgba(240, 238, 233, 0.15);
-      border: 1px solid rgba(240, 238, 233, 0.65);
+    .wish-slip-btn {
+      color: #264e36;
+      background: linear-gradient(135deg, #fbe69b 0%, #f6d365 100%);
+      border: 1px solid #fff3c4;
     }
 
     .faq-btn {
       color: #faf9ab;
-      background-color: rgba(250, 249, 171, 0.1);
-      border: 1px dashed rgba(250, 249, 171, 0.6);
+      background-color: rgba(250, 249, 171, 0.12);
+      border: 1px dashed rgba(250, 249, 171, 0.65);
     }
 
     .story-btn {
@@ -856,12 +917,16 @@
       display: block;
     }
 
-    /* Modal RSVP Form */
+    /* Modal RSVP & Wish Slip Form */
     .rsvp-modal-card {
       max-width: 400px;
       max-height: 85vh;
       overflow-y: auto;
       text-align: left;
+    }
+
+    .rsvp-modal-card::-webkit-scrollbar {
+      display: none;
     }
 
     .form-group {
@@ -921,6 +986,54 @@
       border-color: #F0EEE9;
     }
 
+    /* ปุ่มอัปโหลดรูปสลิป */
+    .slip-upload-box {
+      border: 1.5px dashed rgba(250, 249, 171, 0.55);
+      background: rgba(18, 44, 28, 0.6);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .slip-upload-box:hover {
+      background: rgba(18, 44, 28, 0.9);
+      border-color: #faf9ab;
+    }
+
+    .slip-upload-text {
+      font-size: 12px;
+      color: #faf9ab;
+      font-family: 'Sarabun', sans-serif;
+    }
+
+    .slip-preview-wrapper {
+      display: none;
+      margin-top: 8px;
+      position: relative;
+      text-align: center;
+    }
+
+    .slip-preview-wrapper img {
+      max-height: 150px;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(240, 238, 233, 0.4);
+    }
+
+    .remove-slip-btn {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 11px;
+      color: #ffb3b3;
+      background: none;
+      border: none;
+      text-decoration: underline;
+      cursor: pointer;
+      font-family: 'Sarabun', sans-serif;
+    }
+
     .submit-rsvp-btn {
       width: 100%;
       padding: 11px;
@@ -936,6 +1049,11 @@
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(0,0,0,0.3);
       margin-top: 6px;
+    }
+
+    .submit-rsvp-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .rsvp-success-msg {
@@ -1057,7 +1175,7 @@
 
   <div class="scene-container" id="invitationScene">
     
-    <!-- แถบด้านบน: สลับภาษา & เพลง (เกาะติดขอบบนของการ์ดเสมอ) -->
+    <!-- แถบด้านบน: สลับภาษา & เพลง -->
     <div class="top-floating-bar">
       <button type="button" class="lang-switcher-btn" id="langSwitcherBtn" aria-label="Switch Language">
         <span class="lang-opt active" id="optEN">EN</span>
@@ -1079,10 +1197,10 @@
       <div class="envelope-open-hint" data-i18n="waxHint">Tap to open</div>
     </div>
 
-    <!-- แผ่นการ์ดด้านใน (3 Sessions) -->
+    <!-- แผ่นการ์ดด้านใน (4 Sessions) -->
     <div class="invitation-card-wrapper" id="cardWrapper">
 
-      <!-- SESSION 1 -->
+      <!-- SESSION 1: รูปภาพคู่บ่าวสาว -->
       <section class="session session-1" id="session1">
         <div class="session-1-inner">
           <div class="couple-photo-wrapper">
@@ -1096,7 +1214,7 @@
         </div>
       </section>
 
-      <!-- SESSION 2 -->
+      <!-- SESSION 2: รายละเอียดวันเวลา & Countdown -->
       <section class="session session-2" id="session2">
         <div class="session-2-inner">
           <h1 class="couple-name">Chiraporn<br>&amp; Arunrach</h1>
@@ -1152,7 +1270,7 @@
         </div>
       </section>
 
-      <!-- SESSION 3 -->
+      <!-- SESSION 3: กำหนดการ & ธีมสี & ปุ่ม Q&A + Our Journey -->
       <section class="session session-3" id="session3">
         <div class="session-3-inner">
           <div>
@@ -1193,23 +1311,7 @@
 
           <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
 
-          <div>
-            <div class="section-title" data-i18n="locationTitle">Location &amp; Map</div>
-            <div class="qr-container">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https://maps.app.goo.gl/YnK8gz5MQzo9c4Cn7&amp;color=38-78-54" alt="Venue QR Code">
-              <div class="qr-hint" data-i18n="qrHint">Scan with phone camera to get directions</div>
-            </div>
-          </div>
-
           <div class="action-button-group">
-            <a href="https://maps.app.goo.gl/YnK8gz5MQzo9c4Cn7" target="_blank" class="map-btn">
-              <span data-i18n="openMapBtn">Open in Google Maps</span>
-            </a>
-            
-            <button type="button" class="rsvp-btn" onclick="openRsvpModal()">
-              <span data-i18n="rsvpBtn">RSVP / Respond</span>
-            </button>
-
             <button type="button" class="faq-btn" onclick="openFaqModal()">
               <span data-i18n="faqBtn">Wedding Q&amp;A / ข้อควรรู้</span>
             </button>
@@ -1218,12 +1320,56 @@
               <span data-i18n="storyBtn">Our Journey</span>
             </button>
           </div>
+
+          <div class="scroll-down-hint" onclick="scrollToSession('session4')">
+            <span data-i18n="swipeLocation">Swipe for Map &amp; RSVP</span>
+            <div class="scroll-arrow"></div>
+          </div>
         </div>
       </section>
+
+      <!-- SESSION 4: แผนที่ขนาดใหญ่ & ปุ่ม RSVP + แนบสลิป -->
+      <section class="session session-4" id="session4">
+        <div class="session-4-inner">
+          <div class="venue-pin-header">
+            <svg class="venue-pin-icon" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <div class="section-title" data-i18n="locationTitle" style="margin-bottom:0;">The Venue</div>
+            <div class="venue-sub-label" data-i18n="venueName">Assumption Cathedral, Bangkok</div>
+          </div>
+
+          <div class="map-embed-wrapper">
+            <a href="https://maps.app.goo.gl/YnK8gz5MQzo9c4Cn7" target="_blank" class="floating-open-map">
+              <span data-i18n="openInMapsChip">Open in Maps</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1a73e8">
+                <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+              </svg>
+            </a>
+            <iframe 
+              src="https://maps.google.com/maps?q=Assumption%20Cathedral%20Bangkok&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <div class="action-button-group">
+            <button type="button" class="rsvp-btn" onclick="openRsvpModal()">
+              <span data-i18n="rsvpBtn">RSVP / ตอบรับเข้าร่วมงาน</span>
+            </button>
+
+            <button type="button" class="wish-slip-btn" onclick="openWishSlipModal()">
+              <span data-i18n="wishSlipBtn">💌 Wishes &amp; Gift Slip</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 
-  <!-- Modals -->
+  <!-- Modal Outfit -->
   <div class="modal-backdrop" id="outfitModal">
     <div class="modal-card">
       <button class="modal-close-btn" onclick="closeOutfitModal()">&times;</button>
@@ -1246,6 +1392,7 @@
     </div>
   </div>
 
+  <!-- Modal Calendar -->
   <div class="modal-backdrop" id="calendarModal">
     <div class="modal-card cal-modal-card">
       <button class="modal-close-btn" onclick="closeCalendarModal()">&times;</button>
@@ -1264,6 +1411,7 @@
     </div>
   </div>
 
+  <!-- Modal RSVP -->
   <div class="modal-backdrop" id="rsvpModal">
     <div class="modal-card rsvp-modal-card">
       <button class="modal-close-btn" onclick="closeRsvpModal()">&times;</button>
@@ -1303,7 +1451,7 @@
             <label class="form-label" for="guestNote" data-i18n="formNoteLabel">Wishes or message for the couple</label>
             <textarea id="guestNote" class="form-textarea" rows="2" placeholder="Leave a message for the couple..."></textarea>
           </div>
-          <button type="submit" class="submit-rsvp-btn" data-i18n="submitBtn">Submit RSVP</button>
+          <button type="submit" class="submit-rsvp-btn" id="rsvpSubmitBtn" data-i18n="submitBtn">Submit RSVP</button>
         </form>
       </div>
       <div id="rsvpSuccessMsg" class="rsvp-success-msg">
@@ -1314,6 +1462,53 @@
     </div>
   </div>
 
+  <!-- Modal Wishes & Gift Slip -->
+  <div class="modal-backdrop" id="wishSlipModal">
+    <div class="modal-card rsvp-modal-card">
+      <button class="modal-close-btn" onclick="closeWishSlipModal()">&times;</button>
+      <div id="wishSlipFormContainer">
+        <div class="modal-title" data-i18n="wishSlipModalTitle">Wishes &amp; Gift Slip</div>
+        <div class="modal-pantone-code" style="margin-bottom:12px;" data-i18n="wishSlipModalSub">Leave your blessings &amp; attach transfer slip</div>
+        <form id="weddingWishSlipForm" onsubmit="handleWishSlipSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="wishGuestName" data-i18n="formNameLabel">Your Full Name *</label>
+            <input type="text" id="wishGuestName" class="form-input" placeholder="e.g. Somchai Prasert" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="wishGuestRelation" data-i18n="formRelationLabel">Relation / Side *</label>
+            <select id="wishGuestRelation" class="form-select">
+              <option value="groom" data-i18n="relGroom">Groom's Side (ฝั่งเจ้าบ่าว)</option>
+              <option value="bride" data-i18n="relBride">Bride's Side (ฝั่งเจ้าสาว)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="wishMessage" data-i18n="wishMsgLabel">Blessings for the couple *</label>
+            <textarea id="wishMessage" class="form-textarea" rows="3" placeholder="Write your wishes for Chiraporn & Arunrach..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="slipUploadLabel">Attach Transfer Slip (Optional)</label>
+            <input type="file" id="slipFileInput" accept="image/*" style="display:none;" onchange="handleSlipFileSelect(event)">
+            <div class="slip-upload-box" onclick="document.getElementById('slipFileInput').click()">
+              <div class="slip-upload-text" id="slipUploadPrompt" data-i18n="slipTapToChoose">📸 Tap here to select slip image</div>
+            </div>
+            <div class="slip-preview-wrapper" id="slipPreviewWrapper">
+              <img id="slipPreviewImg" src="" alt="Slip Preview">
+              <br>
+              <button type="button" class="remove-slip-btn" onclick="clearSlipFile()" data-i18n="removeSlipBtn">Remove image</button>
+            </div>
+          </div>
+          <button type="submit" class="submit-rsvp-btn" id="wishSlipSubmitBtn" data-i18n="sendWishBtn">Send Wishes &amp; Slip</button>
+        </form>
+      </div>
+      <div id="wishSlipSuccessMsg" class="rsvp-success-msg">
+        <h3 data-i18n="successTitle">Thank You!</h3>
+        <p data-i18n="wishSuccessMsg">We have received your kind wishes and gift.<br>Thank you for celebrating with us!</p>
+        <div style="font-family:'Blosta Script', 'Alex Brush', cursive; font-size:32px; margin-top:16px;">Chiraporn &amp; Arunrach</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal FAQ -->
   <div class="modal-backdrop" id="faqModal">
     <div class="modal-card faq-modal-card">
       <button class="modal-close-btn" onclick="closeFaqModal()">&times;</button>
@@ -1344,6 +1539,7 @@
     </div>
   </div>
 
+  <!-- Modal Our Journey (AG001 - AG014) -->
   <div class="modal-backdrop" id="storyModal">
     <div class="modal-card story-modal-card">
       <button class="modal-close-btn" onclick="closeStoryModal()">&times;</button>
@@ -1375,7 +1571,9 @@
   </div>
 
   <script>
-    // คำนวณความสูงหน้าจอจริงของอุปกรณ์ ป้องกันปัญหาแถบ Chrome มือถือบังปุ่มด้านล่าง
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRSkS1zfVqU-Fio_JXf8VqzFkWOAJVdHgMafg_k4bHkIWLIm1KOLV7ebCWnjeWde3zdg/exec';
+
+    // คำนวณความสูงหน้าจอจริงของอุปกรณ์
     function updateAppHeight() {
       document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
     }
@@ -1403,6 +1601,7 @@
         cdMins: "Mins",
         cdSecs: "Secs",
         swipeSchedule: "Swipe for Schedule",
+        swipeLocation: "Swipe for Map & RSVP",
         scheduleTitle: "Schedule of Events",
         schedTime1: "09:00 AM",
         schedDesc1: "Guest Registration",
@@ -1412,10 +1611,10 @@
         schedDesc3: "Photo Session",
         dressCodeTitle: "Dress Code & Theme",
         paletteHint: "Tap any color for outfit inspiration",
-        locationTitle: "Location & Map",
-        qrHint: "Scan with phone camera to get directions",
-        openMapBtn: "Open in Google Maps",
+        locationTitle: "The Venue",
+        openInMapsChip: "Open in Maps",
         rsvpBtn: "RSVP / Respond",
+        wishSlipBtn: "💌 Wishes & Gift Slip",
         faqBtn: "Wedding Q&A / FAQs",
         storyBtn: "Our Journey",
         womenDressLabel: "Women: Formal Dress",
@@ -1440,6 +1639,14 @@
         count4: "4+ Persons",
         formNoteLabel: "Wishes or message for the couple",
         submitBtn: "Submit RSVP",
+        wishSlipModalTitle: "Wishes & Gift Slip",
+        wishSlipModalSub: "Leave your blessings & attach transfer slip",
+        wishMsgLabel: "Blessings for the couple *",
+        slipUploadLabel: "Attach Transfer Slip (Optional)",
+        slipTapToChoose: "📸 Tap here to select slip image",
+        removeSlipBtn: "Remove image",
+        sendWishBtn: "Send Wishes & Slip",
+        wishSuccessMsg: "We have received your kind wishes and gift.<br>Thank you for celebrating with us!",
         successTitle: "Thank You!",
         successMsg: "We have received your response.<br>Thank you for being part of our special day.",
         faqModalTitle: "Wedding Q&A",
@@ -1471,6 +1678,7 @@
         cdMins: "นาที",
         cdSecs: "วินาที",
         swipeSchedule: "เลื่อนดูกำหนดการ",
+        swipeLocation: "เลื่อนดูแผนที่ & ตอบรับ",
         scheduleTitle: "กำหนดการพิธี",
         schedTime1: "09:00 น.",
         schedDesc1: "ลงทะเบียนแขกผู้มีเกียรติ",
@@ -1480,10 +1688,10 @@
         schedDesc3: "ถ่ายภาพร่วมกัน",
         dressCodeTitle: "ธีมสีการแต่งกาย",
         paletteHint: "แตะที่เฉดสีเพื่อดูตัวอย่างชุด",
-        locationTitle: "แผนที่และสถานที่จัดงาน",
-        qrHint: "สแกนด้วยกล้องมือถือเพื่อนำทาง",
-        openMapBtn: "เปิดใน Google Maps",
+        locationTitle: "สถานที่จัดงาน",
+        openInMapsChip: "เปิดใน Google Maps",
         rsvpBtn: "ตอบรับการเข้าร่วมงาน (RSVP)",
+        wishSlipBtn: "💌 เขียนคำอวยพร & แนบสลิป",
         faqBtn: "คำถามที่พบบ่อย (Q&A)",
         storyBtn: "เส้นทางของเรา",
         womenDressLabel: "สุภาพสตรี: ชุดเดรสทางการ",
@@ -1508,6 +1716,14 @@
         count4: "4 ท่านขึ้นไป",
         formNoteLabel: "คำอวยพรหรือข้อความที่อยากฝากถึงเราทั้งคู่",
         submitBtn: "ส่งข้อมูลตอบรับ",
+        wishSlipModalTitle: "ร่วมอวยพร & แนบสลิป",
+        wishSlipModalSub: "เขียนคำอวยพรและแนบสลิปแสดงความยินดี",
+        wishMsgLabel: "คำอวยพรถึงบ่าวสาว *",
+        slipUploadLabel: "แนบรูปสลิปโอนเงิน (ถ้ามี)",
+        slipTapToChoose: "📸 แตะที่นี่เพื่อเลือกรูปสลิปจากมือถือ",
+        removeSlipBtn: "ลบรูปภาพนี้",
+        sendWishBtn: "ส่งคำอวยพรและสลิป",
+        wishSuccessMsg: "เราได้รับคำอวยพรและสลิปของท่านเรียบร้อยแล้ว<br>ขอบพระคุณที่มาร่วมเป็นส่วนหนึ่งในวันสำคัญของเราครับ",
         successTitle: "ขอบพระคุณเป็นอย่างยิ่ง",
         successMsg: "เราได้รับข้อมูลตอบรับของท่านเรียบร้อยแล้ว<br>ยินดีและเป็นเกียรติอย่างยิ่งที่ท่านร่วมเป็นส่วนหนึ่งในวันสำคัญของเรา",
         faqModalTitle: "คำถามที่พบบ่อย (Q&A)",
@@ -1558,6 +1774,7 @@
     const modal = document.getElementById('outfitModal');
     const calModal = document.getElementById('calendarModal');
     const rsvpModal = document.getElementById('rsvpModal');
+    const wishSlipModal = document.getElementById('wishSlipModal');
     const faqModal = document.getElementById('faqModal');
     const storyModal = document.getElementById('storyModal');
     const bgMusic = document.getElementById('bgMusic');
@@ -1739,6 +1956,7 @@ END:VCALENDAR`;
       closeCalendarModal();
     }
 
+    // RSVP Modal Functions
     function openRsvpModal() { rsvpModal.classList.add('active'); }
     function closeRsvpModal() { rsvpModal.classList.remove('active'); }
 
@@ -1748,8 +1966,11 @@ END:VCALENDAR`;
 
     function handleRsvpSubmit(e) {
       e.preventDefault();
+      const submitBtn = document.getElementById('rsvpSubmitBtn');
+      submitBtn.disabled = true;
       
       const formData = {
+        formType: 'rsvp',
         name: document.getElementById('guestName').value,
         relation: document.getElementById('guestRelation').value,
         attendance: document.querySelector('input[name="attendance"]:checked').value,
@@ -1757,14 +1978,13 @@ END:VCALENDAR`;
         note: document.getElementById('guestNote').value
       };
 
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbxRSkS1zfVqU-Fio_JXf8VqzFkWOAJVdHgMafg_k4bHkIWLIm1KOLV7ebCWnjeWde3zdg/exec';
-
-      fetch(scriptURL, {
+      fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(formData)
       }).then(() => {
+        submitBtn.disabled = false;
         document.getElementById('rsvpFormContainer').style.display = 'none';
         document.getElementById('rsvpSuccessMsg').style.display = 'block';
 
@@ -1777,6 +1997,110 @@ END:VCALENDAR`;
           }, 500);
         }, 3500);
       }).catch(error => {
+        submitBtn.disabled = false;
+        console.error('Error!', error.message);
+        alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+      });
+    }
+
+    // Wishes & Gift Slip Modal Functions
+    let compressedSlipBase64 = "";
+    let currentSlipFileName = "";
+
+    function openWishSlipModal() { wishSlipModal.classList.add('active'); }
+    function closeWishSlipModal() { wishSlipModal.classList.remove('active'); }
+
+    function handleSlipFileSelect(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      currentSlipFileName = file.name;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 800;
+          const MAX_HEIGHT = 1200;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          compressedSlipBase64 = canvas.toDataURL('image/jpeg', 0.78);
+          document.getElementById('slipPreviewImg').src = compressedSlipBase64;
+          document.getElementById('slipPreviewWrapper').style.display = 'block';
+          document.getElementById('slipUploadPrompt').innerText = "✅ " + file.name;
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearSlipFile() {
+      compressedSlipBase64 = "";
+      currentSlipFileName = "";
+      document.getElementById('slipFileInput').value = "";
+      document.getElementById('slipPreviewWrapper').style.display = 'none';
+      document.getElementById('slipUploadPrompt').innerHTML = translations[currentLang].slipTapToChoose;
+    }
+
+    function handleWishSlipSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('wishSlipSubmitBtn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerText = currentLang === 'en' ? "Sending..." : "กำลังส่งข้อมูล...";
+
+      const payload = {
+        formType: 'wish_slip',
+        name: document.getElementById('wishGuestName').value,
+        relation: document.getElementById('wishGuestRelation').value,
+        attendance: 'wish_and_slip',
+        guestCount: '-',
+        note: document.getElementById('wishMessage').value,
+        slipBase64: compressedSlipBase64,
+        slipFileName: currentSlipFileName
+      };
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      }).then(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        document.getElementById('wishSlipFormContainer').style.display = 'none';
+        document.getElementById('wishSlipSuccessMsg').style.display = 'block';
+
+        setTimeout(() => {
+          closeWishSlipModal();
+          setTimeout(() => {
+            document.getElementById('wishSlipFormContainer').style.display = 'block';
+            document.getElementById('wishSlipSuccessMsg').style.display = 'none';
+            document.getElementById('weddingWishSlipForm').reset();
+            clearSlipFile();
+          }, 500);
+        }, 3500);
+      }).catch(error => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
         console.error('Error!', error.message);
         alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
       });
@@ -1834,6 +2158,7 @@ END:VCALENDAR`;
     modal.addEventListener('click', (e) => { if (e.target === modal) closeOutfitModal(); });
     calModal.addEventListener('click', (e) => { if (e.target === calModal) closeCalendarModal(); });
     rsvpModal.addEventListener('click', (e) => { if (e.target === rsvpModal) closeRsvpModal(); });
+    wishSlipModal.addEventListener('click', (e) => { if (e.target === wishSlipModal) closeWishSlipModal(); });
     faqModal.addEventListener('click', (e) => { if (e.target === faqModal) closeFaqModal(); });
     storyModal.addEventListener('click', (e) => { if (e.target === storyModal) closeStoryModal(); });
   </script>
