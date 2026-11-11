@@ -34,7 +34,7 @@
 
     html, body {
       font-family: 'Georgia', 'Sarabun', serif;
-      background: radial-gradient(circle at center, #1b3525 0%, #0d1a12 100%);
+      background: radial-gradient(circle at center, #1b3525 0%, #09130d 100%);
       height: 100%;
       height: var(--app-height);
       width: 100%;
@@ -42,30 +42,43 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      perspective: 1200px;
       position: fixed;
       inset: 0;
     }
 
+    /* ========================================================
+       โครงสร้างหลัก: มือถือเต็มจอ / คอมพิวเตอร์เป็นกรอบการ์ดสมส่วน
+       ======================================================== */
     .scene-container {
       position: relative;
       width: 100%;
       height: 100%;
-      max-width: 480px;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      background-color: #264e36;
     }
 
-    /* ปุ่มควบคุมมุมบน: สลับภาษา & เพลง */
+    /* สำหรับหน้าจอคอมพิวเตอร์ Notebook และ iPad แนวนอน */
+    @media (min-width: 521px) {
+      .scene-container {
+        height: min(92vh, 860px);
+        width: calc(min(92vh, 860px) * 0.5625); /* อัตราส่วน 9:16 มาตรฐานการ์ดมือถือ */
+        max-width: 440px;
+        min-width: 350px;
+        border-radius: 26px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(240, 238, 233, 0.22);
+      }
+    }
+
+    /* ปุ่มควบคุมมุมบน: เกาะติดอยู่ในกรอบการ์ดเสมอทั้งมือถือและคอม */
     .top-floating-bar {
-      position: fixed;
+      position: absolute;
       top: calc(14px + env(safe-area-inset-top, 0px));
       left: 0;
       right: 0;
-      max-width: 480px;
-      margin: 0 auto;
+      width: 100%;
       padding: 0 16px;
       display: flex;
       justify-content: space-between;
@@ -139,7 +152,7 @@
     }
 
     /* ========================================================
-       หน้าปกซองจดหมายแบบเต็มหน้าจอ (Full Screen Cover)
+       หน้าปกซองจดหมาย
        ======================================================== */
     .envelope-stage {
       position: absolute;
@@ -155,7 +168,7 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      padding-bottom: calc(12vh + env(safe-area-inset-bottom, 20px));
+      padding-bottom: calc(9% + env(safe-area-inset-bottom, 16px));
     }
 
     .envelope-layer {
@@ -164,6 +177,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
       transition: opacity 0.4s ease;
       z-index: 1;
@@ -182,7 +196,6 @@
       opacity: 1;
     }
 
-    /* ปุ่ม Tap to open อยู่สูงเหนือขอบล่างและแถบ Chrome แน่นอน 100% */
     .envelope-open-hint {
       position: relative;
       z-index: 5;
@@ -246,7 +259,7 @@
       transition: all 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
     }
 
-    /* โครงสร้างแต่ละหน้า ใช้ความสูงจริงของ Viewport มือถือ */
+    /* โครงสร้างแต่ละหน้า (Session 1 - 3) */
     .session {
       width: 100%;
       height: 100%;
@@ -257,27 +270,31 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: calc(52px + env(safe-area-inset-top, 0px)) 16px calc(24px + env(safe-area-inset-bottom, 16px)) 16px;
+      padding: calc(48px + env(safe-area-inset-top, 0px)) 16px calc(20px + env(safe-area-inset-bottom, 12px)) 16px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    /* SESSION 1 */
+    /* SESSION 1: รูปภาพยืดหยุ่นอัตโนมัติด้วย Flex ไม่ดันปุ่มตกขอบทั้งในมือถือและคอม */
     .session-1-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 100%;
+      height: 100%;
+      max-height: 660px;
       max-width: 350px;
-      gap: 10px;
+      gap: 8px;
     }
 
     .couple-photo-wrapper {
       width: 88%;
-      max-width: 330px;
-      height: clamp(250px, 50dvh, 430px);
+      max-width: 320px;
+      flex: 1 1 auto;
+      min-height: 200px;
+      max-height: 440px;
       border-radius: 12px;
       overflow: hidden;
       border: 1.5px solid rgba(240, 238, 233, 0.9);
@@ -286,7 +303,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-shrink: 1;
     }
 
     .couple-photo {
@@ -298,9 +314,9 @@
     }
 
     .lace-under-photo {
-      width: 82%;
-      max-width: 280px;
-      height: clamp(32px, 5.5dvh, 48px);
+      width: 80%;
+      max-width: 270px;
+      height: 40px;
       object-fit: contain;
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
       opacity: 0.95;
@@ -308,7 +324,7 @@
       flex-shrink: 0;
     }
 
-    /* ปุ่มแนะนำเลื่อนหน้า อยู่ในกลุ่มเนื้อหาหลัก ไม่หลุดขอบจอแน่นอน */
+    /* ปุ่มแนะนำเลื่อนหน้า */
     .scroll-down-hint {
       font-family: 'Cinzel', 'Sarabun', serif;
       font-size: 10px;
@@ -320,13 +336,18 @@
       align-items: center;
       gap: 3px;
       animation: float-down 2s infinite ease-in-out;
-      margin-top: 4px;
+      margin-top: 2px;
       padding: 6px 16px;
       background: rgba(0, 0, 0, 0.22);
       border: 1px solid rgba(250, 249, 171, 0.35);
       border-radius: 20px;
       cursor: pointer;
       flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .scroll-down-hint:hover {
+      background: rgba(0, 0, 0, 0.4);
     }
 
     .scroll-arrow {
@@ -347,15 +368,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: space-evenly;
       width: 100%;
-      max-width: 360px;
-      gap: clamp(3px, 1dvh, 8px);
+      height: 100%;
+      max-height: 640px;
+      max-width: 350px;
+      gap: 4px;
     }
 
     .couple-name {
       font-family: 'Blosta Script', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: clamp(36px, 6.5dvh, 50px);
+      font-size: clamp(34px, 5.8vh, 48px);
       font-weight: normal;
       color: #F0EEE9;
       margin: 0;
@@ -364,20 +387,20 @@
     }
 
     .invitation-text {
-      font-size: clamp(12px, 1.8dvh, 13.5px);
+      font-size: 13px;
       line-height: 1.35;
       color: rgba(240, 238, 233, 0.94);
       font-style: italic;
-      max-width: 320px;
+      max-width: 310px;
       margin: 0;
     }
 
     .lace-divider-img {
       width: 68%;
       max-width: 220px;
-      height: clamp(18px, 3dvh, 26px);
+      height: 22px;
       object-fit: contain;
-      margin: 1px auto;
+      margin: 0 auto;
       display: block;
       filter: drop-shadow(0 2px 5px rgba(0,0,0,0.38));
       opacity: 0.92;
@@ -394,14 +417,14 @@
     }
 
     .event-info {
-      font-size: clamp(13.5px, 2dvh, 15px);
+      font-size: 14.5px;
       line-height: 1.25;
       color: #F0EEE9;
       font-weight: 600;
     }
 
     .venue-name {
-      font-size: clamp(14px, 2.1dvh, 15.5px);
+      font-size: 15px;
       font-weight: bold;
       color: #F0EEE9;
     }
@@ -435,7 +458,7 @@
       font-size: 10.5px;
       line-height: 1.25;
       color: rgba(240, 238, 233, 0.9);
-      max-width: 320px;
+      max-width: 310px;
       margin: 0 auto;
       font-style: italic;
     }
@@ -444,7 +467,7 @@
       display: flex;
       justify-content: center;
       gap: 6px;
-      margin: 2px auto;
+      margin: 0 auto;
     }
 
     .countdown-box {
@@ -479,12 +502,14 @@
     /* SESSION 3 */
     .session-3-inner {
       width: 100%;
-      max-width: 360px;
+      height: 100%;
+      max-height: 660px;
+      max-width: 350px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: clamp(2px, 0.7dvh, 6px);
+      justify-content: space-evenly;
+      gap: 2px;
     }
 
     .schedule-list {
@@ -545,12 +570,12 @@
     }
 
     .qr-container {
-      margin: 1px 0;
+      margin: 0;
     }
 
     .qr-container img {
-      width: clamp(58px, 10dvh, 72px);
-      height: clamp(58px, 10dvh, 72px);
+      width: 64px;
+      height: 64px;
       border-radius: 8px;
       border: 2px solid rgba(240, 238, 233, 0.9);
       padding: 3px;
@@ -569,8 +594,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(4px, 0.8dvh, 7px);
-      margin-top: 2px;
+      gap: 5px;
       width: 100%;
     }
 
@@ -580,7 +604,7 @@
       align-items: center;
       gap: 6px;
       width: 215px;
-      padding: clamp(6px, 1.1dvh, 8px) 0;
+      padding: 7px 0;
       font-size: 10.5px;
       font-family: 'Cinzel', 'Sarabun', serif;
       letter-spacing: 1.5px;
@@ -696,7 +720,7 @@
     /* Modal Our Journey (AG001 - AG014) */
     .story-modal-card {
       max-width: 420px;
-      max-height: 88dvh;
+      max-height: 88vh;
       overflow-y: auto;
       text-align: center;
       padding: 24px 16px;
@@ -705,7 +729,7 @@
     .story-slider-container {
       position: relative;
       width: 100%;
-      height: clamp(260px, 52dvh, 360px);
+      height: clamp(260px, 50vh, 360px);
       border-radius: 12px;
       overflow: hidden;
       margin: 10px 0 14px 0;
@@ -773,7 +797,7 @@
     /* Modal FAQ Card & Accordion */
     .faq-modal-card {
       max-width: 440px;
-      max-height: 85dvh;
+      max-height: 85vh;
       overflow-y: auto;
       text-align: left;
       padding: 24px 18px;
@@ -835,7 +859,7 @@
     /* Modal RSVP Form */
     .rsvp-modal-card {
       max-width: 400px;
-      max-height: 85dvh;
+      max-height: 85vh;
       overflow-y: auto;
       text-align: left;
     }
@@ -1031,23 +1055,24 @@
   <!-- Audio Element -->
   <audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
 
-  <!-- แถบด้านบน: สลับภาษา & เพลง -->
-  <div class="top-floating-bar">
-    <button type="button" class="lang-switcher-btn" id="langSwitcherBtn" aria-label="Switch Language">
-      <span class="lang-opt active" id="optEN">EN</span>
-      <span>|</span>
-      <span class="lang-opt" id="optTH">TH</span>
-    </button>
-
-    <button type="button" class="music-toggle-btn" id="musicToggleBtn" aria-label="Toggle Music">
-      <svg viewBox="0 0 24 24">
-        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-      </svg>
-    </button>
-  </div>
-
   <div class="scene-container" id="invitationScene">
-    <!-- หน้าปกซองจดหมายแบบเต็มจอ -->
+    
+    <!-- แถบด้านบน: สลับภาษา & เพลง (เกาะติดขอบบนของการ์ดเสมอ) -->
+    <div class="top-floating-bar">
+      <button type="button" class="lang-switcher-btn" id="langSwitcherBtn" aria-label="Switch Language">
+        <span class="lang-opt active" id="optEN">EN</span>
+        <span>|</span>
+        <span class="lang-opt" id="optTH">TH</span>
+      </button>
+
+      <button type="button" class="music-toggle-btn" id="musicToggleBtn" aria-label="Toggle Music">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- หน้าปกซองจดหมาย -->
     <div class="envelope-stage" id="openBtn" role="button" aria-label="Open Invitation">
       <img src="envelope-cover.png" alt="Closed Envelope" class="envelope-layer envelope-closed-img" onerror="this.onerror=null; this.src='couple.jpg';">
       <img src="envelope-open.png" alt="Opened Envelope" class="envelope-layer envelope-opened-img" onerror="this.onerror=null; this.src='couple.jpg';">
@@ -1082,9 +1107,11 @@
 
           <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
 
-          <div class="section-title" data-i18n="dateVenueTitle">Date &amp; Venue</div>
-          <div class="event-info"><strong data-i18n="eventDate">Saturday, December 5, 2026</strong></div>
-          <div class="venue-name" data-i18n="venueName">Assumption Cathedral, Bangkok</div>
+          <div>
+            <div class="section-title" data-i18n="dateVenueTitle">Date &amp; Venue</div>
+            <div class="event-info"><strong data-i18n="eventDate">Saturday, December 5, 2026</strong></div>
+            <div class="venue-name" data-i18n="venueName">Assumption Cathedral, Bangkok</div>
+          </div>
 
           <button type="button" class="cal-btn" onclick="openCalendarModal()">
             <svg viewBox="0 0 24 24">
@@ -1093,26 +1120,28 @@
             <span data-i18n="addToCalBtn">Add to Calendar</span>
           </button>
 
-          <div class="countdown-intro-text" data-i18n="countdownIntro">
-            Please join us in celebrating our love and marriage, countdown in…
-          </div>
+          <div>
+            <div class="countdown-intro-text" data-i18n="countdownIntro">
+              Please join us in celebrating our love and marriage, countdown in…
+            </div>
 
-          <div class="countdown-wrapper">
-            <div class="countdown-box">
-              <span class="countdown-number" id="cdDays">00</span>
-              <span class="countdown-label" data-i18n="cdDays">Days</span>
-            </div>
-            <div class="countdown-box">
-              <span class="countdown-number" id="cdHours">00</span>
-              <span class="countdown-label" data-i18n="cdHours">Hours</span>
-            </div>
-            <div class="countdown-box">
-              <span class="countdown-number" id="cdMins">00</span>
-              <span class="countdown-label" data-i18n="cdMins">Mins</span>
-            </div>
-            <div class="countdown-box">
-              <span class="countdown-number" id="cdSecs">00</span>
-              <span class="countdown-label" data-i18n="cdSecs">Secs</span>
+            <div class="countdown-wrapper" style="margin-top: 6px;">
+              <div class="countdown-box">
+                <span class="countdown-number" id="cdDays">00</span>
+                <span class="countdown-label" data-i18n="cdDays">Days</span>
+              </div>
+              <div class="countdown-box">
+                <span class="countdown-number" id="cdHours">00</span>
+                <span class="countdown-label" data-i18n="cdHours">Hours</span>
+              </div>
+              <div class="countdown-box">
+                <span class="countdown-number" id="cdMins">00</span>
+                <span class="countdown-label" data-i18n="cdMins">Mins</span>
+              </div>
+              <div class="countdown-box">
+                <span class="countdown-number" id="cdSecs">00</span>
+                <span class="countdown-label" data-i18n="cdSecs">Secs</span>
+              </div>
             </div>
           </div>
 
@@ -1126,44 +1155,50 @@
       <!-- SESSION 3 -->
       <section class="session session-3" id="session3">
         <div class="session-3-inner">
-          <div class="section-title" data-i18n="scheduleTitle">Schedule of Events</div>
-          <ul class="schedule-list">
-            <li><strong data-i18n="schedTime1">09:00 AM</strong> <span data-i18n="schedDesc1">Guest Registration</span></li>
-            <li><strong data-i18n="schedTime2">10:00 AM</strong> <span data-i18n="schedDesc2">Church Ceremony</span></li>
-            <li><strong data-i18n="schedTime3">11:00 AM</strong> <span data-i18n="schedDesc3">Photo Session</span></li>
-          </ul>
-
-          <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
-
-          <div class="section-title" data-i18n="dressCodeTitle">Dress Code &amp; Theme</div>
-          <div class="palette-container">
-            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Light Grey / Silver', '#cecece', 'Pantone #cecece', 'wedding guest outfit ideas light grey silver smart casual')">
-              <div class="color-swatch" style="background-color: #cecece;"></div>
-            </button>
-            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Sage Green', '#a0cda7', 'Pantone #a0cda7', 'wedding guest outfit ideas sage green smart casual')">
-              <div class="color-swatch" style="background-color: #a0cda7;"></div>
-            </button>
-            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Baby Blue', '#c2e9ff', 'Pantone #c2e9ff', 'wedding guest outfit ideas baby blue smart casual')">
-              <div class="color-swatch" style="background-color: #c2e9ff;"></div>
-            </button>
-            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Soft Butter Yellow', '#faf9ab', 'Pantone #faf9ab', 'wedding guest outfit ideas butter yellow pastel smart casual')">
-              <div class="color-swatch" style="background-color: #faf9ab;"></div>
-            </button>
-            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Blush Pink', '#fddae8', 'Pantone #fddae8', 'wedding guest outfit ideas pastel pink blush smart casual')">
-              <div class="color-swatch" style="background-color: #fddae8;"></div>
-            </button>
-            <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Warm Beige &amp; Tan', '#cbab89', 'Pantone #cbab89', 'wedding guest outfit ideas warm beige tan smart casual')">
-              <div class="color-swatch" style="background-color: #cbab89;"></div>
-            </button>
+          <div>
+            <div class="section-title" data-i18n="scheduleTitle">Schedule of Events</div>
+            <ul class="schedule-list">
+              <li><strong data-i18n="schedTime1">09:00 AM</strong> <span data-i18n="schedDesc1">Guest Registration</span></li>
+              <li><strong data-i18n="schedTime2">10:00 AM</strong> <span data-i18n="schedDesc2">Church Ceremony</span></li>
+              <li><strong data-i18n="schedTime3">11:00 AM</strong> <span data-i18n="schedDesc3">Photo Session</span></li>
+            </ul>
           </div>
-          <div class="palette-hint" data-i18n="paletteHint">Tap any color for outfit inspiration</div>
 
           <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
 
-          <div class="section-title" data-i18n="locationTitle">Location &amp; Map</div>
-          <div class="qr-container">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https://maps.app.goo.gl/YnK8gz5MQzo9c4Cn7&amp;color=38-78-54" alt="Venue QR Code">
-            <div class="qr-hint" data-i18n="qrHint">Scan with phone camera to get directions</div>
+          <div>
+            <div class="section-title" data-i18n="dressCodeTitle">Dress Code &amp; Theme</div>
+            <div class="palette-container">
+              <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Light Grey / Silver', '#cecece', 'Pantone #cecece', 'wedding guest outfit ideas light grey silver smart casual')">
+                <div class="color-swatch" style="background-color: #cecece;"></div>
+              </button>
+              <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Sage Green', '#a0cda7', 'Pantone #a0cda7', 'wedding guest outfit ideas sage green smart casual')">
+                <div class="color-swatch" style="background-color: #a0cda7;"></div>
+              </button>
+              <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Baby Blue', '#c2e9ff', 'Pantone #c2e9ff', 'wedding guest outfit ideas baby blue smart casual')">
+                <div class="color-swatch" style="background-color: #c2e9ff;"></div>
+              </button>
+              <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Soft Butter Yellow', '#faf9ab', 'Pantone #faf9ab', 'wedding guest outfit ideas butter yellow pastel smart casual')">
+                <div class="color-swatch" style="background-color: #faf9ab;"></div>
+              </button>
+              <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Blush Pink', '#fddae8', 'Pantone #fddae8', 'wedding guest outfit ideas pastel pink blush smart casual')">
+                <div class="color-swatch" style="background-color: #fddae8;"></div>
+              </button>
+              <button type="button" class="color-swatch-btn" onclick="openOutfitModal('Warm Beige &amp; Tan', '#cbab89', 'Pantone #cbab89', 'wedding guest outfit ideas warm beige tan smart casual')">
+                <div class="color-swatch" style="background-color: #cbab89;"></div>
+              </button>
+            </div>
+            <div class="palette-hint" data-i18n="paletteHint">Tap any color for outfit inspiration</div>
+          </div>
+
+          <img src="lace.png" alt="Lace Divider" class="lace-divider-img">
+
+          <div>
+            <div class="section-title" data-i18n="locationTitle">Location &amp; Map</div>
+            <div class="qr-container">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&amp;data=https://maps.app.goo.gl/YnK8gz5MQzo9c4Cn7&amp;color=38-78-54" alt="Venue QR Code">
+              <div class="qr-hint" data-i18n="qrHint">Scan with phone camera to get directions</div>
+            </div>
           </div>
 
           <div class="action-button-group">
@@ -1340,7 +1375,7 @@
   </div>
 
   <script>
-    // คำนวณความสูงหน้าจอที่แท้จริงบนมือถือ (แก้ปัญหา Chrome Address Bar บังด้านล่าง)
+    // คำนวณความสูงหน้าจอจริงของอุปกรณ์ ป้องกันปัญหาแถบ Chrome มือถือบังปุ่มด้านล่าง
     function updateAppHeight() {
       document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
     }
