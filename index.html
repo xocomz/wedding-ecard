@@ -171,9 +171,10 @@
       opacity: 1;
     }
 
+    /* ปุ่ม Tab to open */
     .envelope-open-hint {
       position: absolute;
-      bottom: 35px;
+      bottom: 50px; 
       left: 50%;
       transform: translateX(-50%);
       font-family: 'Cinzel', serif;
@@ -251,7 +252,7 @@
       position: relative;
     }
 
-    /* SESSION 1: รูปภาพบ่าวสาวแบบเต็มพื้นที่เว็บไซต์มากขึ้น */
+    /* SESSION 1 */
     .session-1 {
       padding: 14px 12px;
       justify-content: center;
@@ -266,10 +267,10 @@
     }
 
     .couple-photo-wrapper {
-      width: 94%;
-      max-width: 360px;
-      height: 68vh;
-      max-height: 540px;
+      width: 90%;
+      max-width: 340px;
+      height: 58vh;
+      max-height: 480px;
       border-radius: 12px;
       overflow: hidden;
       border: 1.5px solid rgba(240, 238, 233, 0.9);
@@ -289,11 +290,11 @@
     }
 
     .lace-under-photo {
-      width: 94%;
-      max-width: 360px;
-      height: 65px;
+      width: 90%;
+      max-width: 340px;
+      height: 55px;
       object-fit: contain;
-      margin-top: 6px;
+      margin-top: 4px;
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.45));
       opacity: 0.95;
       pointer-events: none;
@@ -301,7 +302,7 @@
 
     .scroll-down-hint {
       position: absolute;
-      bottom: 8px;
+      bottom: 15px;
       left: 50%;
       transform: translateX(-50%);
       font-family: 'Cinzel', 'Sarabun', serif;
@@ -312,13 +313,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 3px;
+      gap: 2px;
       animation: float-down 2s infinite ease-in-out;
+      z-index: 10;
     }
 
     .scroll-arrow {
-      width: 11px;
-      height: 11px;
+      width: 10px;
+      height: 10px;
       border-right: 1.5px solid #F0EEE9;
       border-bottom: 1.5px solid #F0EEE9;
       transform: rotate(45deg);
@@ -326,29 +328,29 @@
 
     @keyframes float-down {
       0%, 100% { transform: translate(-50%, 0); opacity: 0.6; }
-      50% { transform: translate(-50%, 5px); opacity: 1; }
+      50% { transform: translate(-50%, 4px); opacity: 1; }
     }
 
     /* SESSION 2 */
     .session-2 {
       justify-content: center;
       padding: 16px 16px;
-      gap: 6px;
+      gap: 4px;
     }
 
     .couple-name {
       font-family: 'Blosta Script', 'Alex Brush', 'Great Vibes', cursive;
-      font-size: 58px;
+      font-size: 52px;
       font-weight: normal;
       color: #F0EEE9;
       margin: 0;
-      line-height: 1.15;
+      line-height: 1.1;
       letter-spacing: 0.5px;
     }
 
     .invitation-text {
-      font-size: 14px;
-      line-height: 1.5;
+      font-size: 13.5px;
+      line-height: 1.4;
       color: rgba(240, 238, 233, 0.94);
       font-style: italic;
       max-width: 340px;
@@ -356,11 +358,11 @@
     }
 
     .lace-divider-img {
-      width: 82%;
-      max-width: 300px;
-      height: 34px;
+      width: 75%;
+      max-width: 260px;
+      height: 28px;
       object-fit: contain;
-      margin: 4px auto;
+      margin: 2px auto;
       display: block;
       filter: drop-shadow(0 2px 5px rgba(0,0,0,0.38));
       opacity: 0.92;
@@ -368,7 +370,7 @@
     }
 
     .section-title {
-      font-size: 12px;
+      font-size: 11.5px;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #F0EEE9;
@@ -377,26 +379,26 @@
     }
 
     .event-info {
-      font-size: 15.5px;
-      line-height: 1.4;
+      font-size: 15px;
+      line-height: 1.3;
       color: #F0EEE9;
       font-weight: 600;
     }
 
     .venue-name {
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: bold;
       color: #F0EEE9;
-      margin-top: 2px;
-      margin-bottom: 6px;
+      margin-top: 1px;
+      margin-bottom: 4px;
     }
 
     .cal-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 5px 14px;
-      font-size: 11px;
+      gap: 5px;
+      padding: 4px 12px;
+      font-size: 10.5px;
       font-family: 'Cinzel', 'Sarabun', serif;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -408,38 +410,37 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       transition: all 0.25s ease;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .cal-btn svg {
-      width: 12px;
-      height: 12px;
+      width: 11px;
+      height: 11px;
       fill: #264e36;
     }
 
-    /* COUNTDOWN & TEXT */
     .countdown-intro-text {
-      font-size: 11.5px;
-      line-height: 1.4;
+      font-size: 11px;
+      line-height: 1.3;
       color: rgba(240, 238, 233, 0.9);
       max-width: 340px;
-      margin: 0 auto 4px auto;
+      margin: 0 auto 2px auto;
       font-style: italic;
     }
 
     .countdown-wrapper {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin: 2px auto 6px auto;
+      gap: 6px;
+      margin: 2px auto 4px auto;
     }
 
     .countdown-box {
       background: rgba(240, 238, 233, 0.08);
       border: 1px solid rgba(240, 238, 233, 0.25);
       border-radius: 8px;
-      padding: 6px 8px;
-      min-width: 50px;
+      padding: 5px 6px;
+      min-width: 46px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -448,7 +449,7 @@
 
     .countdown-number {
       font-family: 'Cinzel', serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       color: #F0EEE9;
       line-height: 1;
@@ -456,17 +457,17 @@
 
     .countdown-label {
       font-family: 'Cinzel', 'Sarabun', serif;
-      font-size: 8px;
+      font-size: 7.5px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: rgba(240, 238, 233, 0.75);
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
-    /* SESSION 3: กึ่งกลางแนวตั้ง */
+    /* SESSION 3 */
     .session-3 {
       justify-content: center;
-      padding: 24px 20px;
+      padding: 20px 16px;
       overflow-y: auto;
     }
 
@@ -482,20 +483,20 @@
     .schedule-list {
       list-style: none;
       padding: 0;
-      margin: 4px 0 6px 0;
+      margin: 2px 0 4px 0;
       text-align: left;
       display: inline-block;
     }
 
     .schedule-list li {
-      font-size: 13px;
-      padding: 3px 0;
+      font-size: 12.5px;
+      padding: 2px 0;
       color: rgba(240, 238, 233, 0.95);
     }
 
     .schedule-list strong {
       display: inline-block;
-      width: 86px;
+      width: 82px;
       color: #F0EEE9;
     }
 
@@ -503,8 +504,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
-      margin: 4px auto 3px auto;
+      gap: 8px;
+      margin: 2px auto 2px auto;
       flex-wrap: wrap;
     }
 
@@ -522,50 +523,49 @@
     }
 
     .color-swatch {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       border: 2px solid #F0EEE9;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
     }
 
     .palette-hint {
-      font-size: 10.5px;
+      font-size: 10px;
       letter-spacing: 0.8px;
       color: rgba(240, 238, 233, 0.82);
-      margin-top: 3px;
+      margin-top: 2px;
       font-style: italic;
     }
 
     .qr-container {
-      margin-top: 4px;
-      margin-bottom: 6px;
+      margin-top: 2px;
+      margin-bottom: 4px;
     }
 
     .qr-container img {
-      width: 84px;
-      height: 84px;
+      width: 76px;
+      height: 76px;
       border-radius: 8px;
       border: 2px solid rgba(240, 238, 233, 0.9);
-      padding: 4px;
+      padding: 3px;
       background: #F0EEE9;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .qr-hint {
-      font-size: 10px;
+      font-size: 9.5px;
       color: rgba(240, 238, 233, 0.8);
-      margin-top: 3px;
+      margin-top: 2px;
       font-style: italic;
     }
 
-    /* ปุ่ม Action: Map -> RSVP -> FAQ -> Our Story */
     .action-button-group {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
-      margin-top: 8px;
+      gap: 6px;
+      margin-top: 6px;
       width: 100%;
     }
 
@@ -573,10 +573,10 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      gap: 7px;
-      width: 230px;
-      padding: 8.5px 0;
-      font-size: 11.5px;
+      gap: 6px;
+      width: 220px;
+      padding: 7.5px 0;
+      font-size: 11px;
       font-family: 'Cinzel', 'Sarabun', serif;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -699,13 +699,13 @@
       font-family: 'Cinzel', 'Sarabun', sans-serif;
     }
 
-    /* Modal Our Story */
+    /* Modal Our Journey (AG001 - AG014) */
     .story-modal-card {
-      max-width: 440px;
-      max-height: 88vh;
+      max-width: 420px;
+      max-height: 90vh;
       overflow-y: auto;
-      text-align: left;
-      padding: 24px 18px;
+      text-align: center;
+      padding: 24px 16px;
     }
 
     .story-modal-card::-webkit-scrollbar {
@@ -720,20 +720,23 @@
     .story-slider-container {
       position: relative;
       width: 100%;
-      height: 220px;
+      height: 360px;
       border-radius: 12px;
       overflow: hidden;
-      margin: 14px 0 16px 0;
+      margin: 10px 0 14px 0;
       border: 1.5px solid rgba(240, 238, 233, 0.4);
       background: #193826;
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .story-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+      transition: opacity 0.4s ease-in-out;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -747,7 +750,8 @@
     .story-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #0d1a12;
       display: block;
     }
 
@@ -755,11 +759,11 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.5);
       color: #F0EEE9;
       border: none;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -771,83 +775,18 @@
     }
 
     .slider-nav-btn:hover {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
     }
 
-    .slider-prev { left: 8px; }
-    .slider-next { right: 8px; }
+    .slider-prev { left: 10px; }
+    .slider-next { right: 10px; }
 
-    .slider-dots {
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      z-index: 5;
-    }
-
-    .slider-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(240, 238, 233, 0.4);
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-
-    .slider-dot.active {
-      background: #faf9ab;
-      transform: scale(1.3);
-    }
-
-    .story-timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      position: relative;
-      padding-left: 18px;
-      border-left: 2px solid rgba(240, 238, 233, 0.25);
-      margin-top: 16px;
-      margin-left: 6px;
-    }
-
-    .timeline-item {
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -23px;
-      top: 4px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #faf9ab;
-      box-shadow: 0 0 6px rgba(250, 249, 171, 0.8);
-    }
-
-    .timeline-year {
+    .slider-counter {
       font-family: 'Cinzel', serif;
-      font-size: 13px;
-      font-weight: 700;
-      color: #faf9ab;
-      letter-spacing: 1px;
-    }
-
-    .timeline-title {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #F0EEE9;
-      margin: 2px 0;
-    }
-
-    .timeline-desc {
-      font-size: 11.5px;
-      line-height: 1.6;
+      font-size: 12px;
+      letter-spacing: 1.5px;
       color: rgba(240, 238, 233, 0.85);
+      margin-top: 8px;
     }
 
     /* Modal FAQ Card & Accordion */
@@ -1118,32 +1057,6 @@
       font-family: 'Cinzel', 'Sarabun', sans-serif;
       padding: 4px 8px;
     }
-
-    @media (max-width: 480px) {
-      .couple-name {
-        font-size: 52px;
-      }
-      .couple-photo-wrapper {
-        width: 94%;
-        max-width: 360px;
-        height: 68vh;
-      }
-      .lace-under-photo {
-        width: 94%;
-        height: 62px;
-      }
-      .lace-divider-img {
-        width: 85%;
-        height: 34px;
-      }
-      .countdown-box {
-        min-width: 50px;
-        padding: 5px 6px;
-      }
-      .countdown-number {
-        font-size: 17px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -1177,7 +1090,7 @@
     <!-- แผ่นการ์ดด้านใน (3 Sessions) -->
     <div class="invitation-card-wrapper" id="cardWrapper">
 
-      <!-- SESSION 1: รูปภาพบ่าวสาวแบบเต็มพื้นที่เว็บไซต์มากขึ้น -->
+      <!-- SESSION 1 -->
       <section class="session session-1">
         <div class="photo-section-container">
           <div class="couple-photo-wrapper">
@@ -1192,7 +1105,7 @@
         </div>
       </section>
 
-      <!-- SESSION 2: ข้อความกระชับ ขยายตัวอักษรใหญ่ขึ้นพอดีหน้าจอ -->
+      <!-- SESSION 2 -->
       <section class="session session-2">
         <h1 class="couple-name">Chiraporn<br>&amp; Arunrach</h1>
         
@@ -1242,7 +1155,7 @@
         </div>
       </section>
 
-      <!-- SESSION 3: กำหนดการ ธีมสี แผนที่ และปุ่ม Action -->
+      <!-- SESSION 3 -->
       <section class="session session-3">
         <div class="session-3-inner">
           <div class="section-title" data-i18n="scheduleTitle">Schedule of Events</div>
@@ -1299,7 +1212,7 @@
             </button>
 
             <button type="button" class="story-btn" onclick="openStoryModal()">
-              <span data-i18n="storyBtn">Our Story / เรื่องราวของเรา</span>
+              <span data-i18n="storyBtn">Our Journey / เส้นทางของเรา</span>
             </button>
           </div>
         </div>
@@ -1353,7 +1266,7 @@
       <button class="modal-close-btn" onclick="closeRsvpModal()">&times;</button>
       <div id="rsvpFormContainer">
         <div class="modal-title" data-i18n="rsvpTitle">RSVP</div>
-        <div class="modal-pantone-code" style="margin-bottom:12px;" data-i18n="rsvpDeadline">Kindly reply by November 15, 2026</div>
+        <div class="modal-pantone-code" style="margin-bottom:12px;" data-i18n="rsvpDeadline">Kindly reply by November 30, 2026</div>
         <form id="weddingRsvpForm" onsubmit="handleRsvpSubmit(event)">
           <div class="form-group">
             <label class="form-label" for="guestName" data-i18n="formNameLabel">Your Full Name *</label>
@@ -1431,31 +1344,30 @@
   <div class="modal-backdrop" id="storyModal">
     <div class="modal-card story-modal-card">
       <button class="modal-close-btn" onclick="closeStoryModal()">&times;</button>
-      <div class="modal-title" data-i18n="storyModalTitle">Our Story</div>
-      <div class="modal-pantone-code" data-i18n="storyModalSub">A Journey of Love • Since 2009</div>
+      <div class="modal-title" data-i18n="storyModalTitle">Our Journey</div>
+      <div class="modal-pantone-code" data-i18n="storyModalSub">AGTGTH Photo Gallery</div>
+      
       <div class="story-slider-container" id="storySlider">
-        <div class="story-slide active"><img src="1.jpg" alt="1" onerror="this.src='couple.jpg';"></div>
-        <div class="story-slide"><img src="2.jpg" alt="2" onerror="this.src='couple.jpg';"></div>
-        <div class="story-slide"><img src="3.jpg" alt="3" onerror="this.src='couple.jpg';"></div>
-        <div class="story-slide"><img src="4.jpg" alt="4" onerror="this.src='couple.jpg';"></div>
-        <div class="story-slide"><img src="5.jpg" alt="5" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide active"><img src="AG001.jpg" alt="AG001" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG002.jpg" alt="AG002" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG003.jpg" alt="AG003" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG004.jpg" alt="AG004" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG005.jpg" alt="AG005" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG006.jpg" alt="AG006" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG007.jpg" alt="AG007" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG008.jpg" alt="AG008" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG009.jpg" alt="AG009" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG010.jpg" alt="AG010" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG011.jpg" alt="AG011" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG012.jpg" alt="AG012" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG013.jpg" alt="AG013" onerror="this.src='couple.jpg';"></div>
+        <div class="story-slide"><img src="AG014.jpg" alt="AG014" onerror="this.src='couple.jpg';"></div>
+
         <button type="button" class="slider-nav-btn slider-prev" onclick="prevSlide()">&#10094;</button>
         <button type="button" class="slider-nav-btn slider-next" onclick="nextSlide()">&#10095;</button>
-        <div class="slider-dots" id="sliderDots">
-          <div class="slider-dot active" onclick="goToSlide(0)"></div>
-          <div class="slider-dot" onclick="goToSlide(1)"></div>
-          <div class="slider-dot" onclick="goToSlide(2)"></div>
-          <div class="slider-dot" onclick="goToSlide(3)"></div>
-          <div class="slider-dot" onclick="goToSlide(4)"></div>
-        </div>
       </div>
-      <div class="story-timeline">
-        <div class="timeline-item"><div class="timeline-year">2009</div><div class="timeline-title" data-i18n="tlTitle1">The First Hello at SWU</div><div class="timeline-desc" data-i18n="tlDesc1">We first met as freshmen studying Political Science at SWU.</div></div>
-        <div class="timeline-item"><div class="timeline-year">2012</div><div class="timeline-title" data-i18n="tlTitle2">From Friends to Sweethearts</div><div class="timeline-desc" data-i18n="tlDesc2">After three years, we officially started dating.</div></div>
-        <div class="timeline-item"><div class="timeline-year">2012 – 2020</div><div class="timeline-title" data-i18n="tlTitle3">Growing Together</div><div class="timeline-desc" data-i18n="tlDesc3">Supporting each other through university and careers.</div></div>
-        <div class="timeline-item"><div class="timeline-year">2021 – 2025</div><div class="timeline-title" data-i18n="tlTitle4">14 Years of Memories</div><div class="timeline-desc" data-i18n="tlDesc4">Over a decade of travels, laughter, and adventures.</div></div>
-        <div class="timeline-item"><div class="timeline-year">DEC 5, 2026</div><div class="timeline-title" data-i18n="tlTitle5">Our Forever Begins</div><div class="timeline-desc" data-i18n="tlDesc5">Our sacred step into Holy Matrimony at Assumption Cathedral.</div></div>
-      </div>
+
+      <div class="slider-counter" id="sliderCounter">1 / 14</div>
     </div>
   </div>
 
@@ -1489,14 +1401,14 @@
         openMapBtn: "Open in Google Maps",
         rsvpBtn: "RSVP / Respond",
         faqBtn: "Wedding Q&A / FAQs",
-        storyBtn: "Our Story / Our Journey",
+        storyBtn: "Our Journey",
         womenDressLabel: "Women: Formal Dress",
         menCasualLabel: "Men: Smart Casual",
         exploreRefs: "Explore Real Photo References →",
         calModalTitle: "Add to Calendar",
         calModalSub: "Select your calendar",
         rsvpTitle: "RSVP",
-        rsvpDeadline: "Kindly reply by November 15, 2026",
+        rsvpDeadline: "Kindly reply by November 30, 2026",
         formNameLabel: "Your Full Name *",
         formRelationLabel: "Relation / Side *",
         relGroom: "Groom's Side",
@@ -1526,18 +1438,8 @@
         a4: "Feel free to capture photos or videos throughout the ceremony! Please tag us with #agtgth so we can cherish these special moments together.",
         q5: "5. Will there be parking at the venue?",
         a5: "Limited on-site parking around the cathedral (approx. 20-30 cars). Public transit via BTS Saphan Taksin (Exit 3) or express boat is recommended.",
-        storyModalTitle: "Our Story",
-        storyModalSub: "A Journey of Love • Since 2009",
-        tlTitle1: "The First Hello at SWU (2009)",
-        tlDesc1: "We first met as freshmen studying Political Science at SWU.",
-        tlTitle2: "From Friends to Sweethearts (2012)",
-        tlDesc2: "After three years, we officially started dating.",
-        tlTitle3: "Growing Together Side by Side (2012 - 2020)",
-        tlDesc3: "Supporting each other through university and careers.",
-        tlTitle4: "14 Years of Memories & Adventures (2021 - 2025)",
-        tlDesc4: "Over a decade of travels and laughter.",
-        tlTitle5: "Our Forever Begins (DEC 5, 2026)",
-        tlDesc5: "Our sacred step into Holy Matrimony at Assumption Cathedral."
+        storyModalTitle: "Our Journey",
+        storyModalSub: "AGTGTH Photo Gallery"
       },
       th: {
         waxHint: "แตะเพื่อเปิดการ์ด",
@@ -1567,14 +1469,14 @@
         openMapBtn: "เปิดใน Google Maps",
         rsvpBtn: "ตอบรับการเข้าร่วมงาน (RSVP)",
         faqBtn: "คำถามที่พบบ่อย (Q&A)",
-        storyBtn: "เรื่องราวของเรา (Our Story)",
+        storyBtn: "เส้นทางของเรา",
         womenDressLabel: "สุภาพสตรี: ชุดเดรสทางการ",
         menCasualLabel: "สุภาพบุรุษ: Smart Casual",
         exploreRefs: "ดูไอเดียรูปภาพอ้างอิงเพิ่มเติม →",
         calModalTitle: "บันทึกลงปฏิทิน",
         calModalSub: "เลือกปฏิทินของคุณ",
         rsvpTitle: "ตอบรับเข้าร่วมงาน (RSVP)",
-        rsvpDeadline: "กรุณาตอบรับภายในวันที่ 15 พฤศจิกายน 2569",
+        rsvpDeadline: "กรุณาตอบรับภายในวันที่ 30 พฤศจิกายน 2569",
         formNameLabel: "ชื่อ - นามสกุล *",
         formRelationLabel: "ฝั่ง / ความเกี่ยวข้อง *",
         relGroom: "ฝั่งเจ้าบ่าว",
@@ -1604,18 +1506,8 @@
         a4: "สามารถถ่ายภาพหรือวิดีโอในระหว่างพิธีได้ตามสบายเลยครับ และช่วยติดแฮชแท็ก <strong>#agtgth</strong> พร้อมแท็กหาเราทั้งคู่ เพื่อเก็บภาพความทรงจำและช่วงเวลาดีๆ ร่วมกันได้เลย!",
         q5: "5. มีที่จอดรถและเดินทางอย่างไร?",
         a5: "พื้นที่รอบๆโบสถ์รองรับได้ราวๆ 20 - 30 คัน หรือเดินทางด้วย BTS สะพานตากสิน (ทางออก 3) และเรือด่วน",
-        storyModalTitle: "เรื่องราวของเรา",
-        storyModalSub: "การเดินทางแห่งความรัก • ตั้งแต่ปี 2009",
-        tlTitle1: "จุดเริ่มต้นที่ มศว (2009)",
-        tlDesc1: "เราพบกันครั้งแรกในฐานะเพื่อนร่วมรุ่น คณะรัฐศาสตร์ มศว",
-        tlTitle2: "จากเพื่อนสู่คนรู้ใจ (2012)",
-        tlDesc2: "หลังจากเป็นเพื่อนสนิทกันมา 3 ปี เราตัดสินใจคบกันเป็นคนรัก",
-        tlTitle3: "เติบโตร่วมกันในทุกช่วงวัย (2012 – 2020)",
-        tlDesc3: "คอยเป็นกำลังใจและอยู่เคียงข้างกันในทุกก้าวสำคัญ",
-        tlTitle4: "14 ปีแห่งความทรงจำ (2021 – 2025)",
-        tlDesc4: "กว่าทศวรรษที่เราได้ออกเดินทางและสร้างความทรงจำร่วมกัน",
-        tlTitle5: "บทเริ่มต้นของคำว่าตลอดไป (5 ธันวาคม 2569)",
-        tlDesc5: "พิธีมงคลสมรส ณ อาสนวิหารอัสสัมชัญ"
+        storyModalTitle: "เส้นทางของเรา",
+        storyModalSub: "แกลเลอรีภาพความประทับใจ AGTGTH"
       }
     };
 
@@ -1886,7 +1778,7 @@ END:VCALENDAR`;
 
     let currentSlide = 0;
     const slides = document.querySelectorAll('.story-slide');
-    const dots = document.querySelectorAll('.slider-dot');
+    const totalSlides = slides.length;
 
     function openStoryModal() {
       storyModal.classList.add('active');
@@ -1896,20 +1788,18 @@ END:VCALENDAR`;
     function closeStoryModal() { storyModal.classList.remove('active'); }
 
     function showSlide(index) {
-      if (index >= slides.length) currentSlide = 0;
-      else if (index < 0) currentSlide = slides.length - 1;
+      if (index >= totalSlides) currentSlide = 0;
+      else if (index < 0) currentSlide = totalSlides - 1;
       else currentSlide = index;
 
       slides.forEach(s => s.classList.remove('active'));
-      dots.forEach(d => d.classList.remove('active'));
-
       slides[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
+      
+      document.getElementById('sliderCounter').innerText = `${currentSlide + 1} / ${totalSlides}`;
     }
 
     function nextSlide() { showSlide(currentSlide + 1); }
     function prevSlide() { showSlide(currentSlide - 1); }
-    function goToSlide(index) { showSlide(index); }
 
     let touchStartX = 0;
     let touchEndX = 0;
